@@ -97,9 +97,9 @@
                             <img src="assets/img/LAB 1B - task 1 (ECHO).png" alt = "LAB 1B - task 1 (ECHO)" width=90% />
                         </p>
                         <p>
-                            In Task 1, I had to program the Artemis to echo back the data that was sent to it. 
+                            In task 1, I had to program the Artemis to echo back the data that was sent to it. 
                             The a Artemis board sent back to the computer a string. The string was then printed out in the Python terminal 
-                            after running ble.send_command(CMD.ECHO, "Hello World!") and then receiving the string.
+                            after receiving the string.
                         </p>
                     </div>
                 </div>
@@ -113,15 +113,96 @@
                             Code in the Arduino side:
                         </p>
                         <p>
-                            <img src="assets/img/LAB 1B - task 1 (ECHO).png" alt = "LAB 1B - task 1 (ECHO)" width=90% />
+                            <img src="assets/img/LAB 1B - task 2 (send_three_floats).png" alt = "LAB 1B - task 2 (send_three_floats).png" width=90% />
                         </p>
                         <p>
-                            I uploaded Example4_Serial which allowed me to type in the serial monitor and have the Artemis board print out the characters I typed in.
+                            Results in the Python side:
                         </p>
-
-                        
+                        <p>
+                            <img src="assets/img/LAB 1B - task 2 (send_three_floats, PIC 3).png" alt = "send_three_floats, PIC 3" width=90% />
+                        </p>
+                        <p>
+                            In task 2, I had to program the SEND_THREE_FLOATS command to send three floats from the computer to the artemis board. 
+                            I followed the format of that of SEND_TWO_INTS which allowed me to send three floats to the Artemis board to then be printed 
+                            in the serial monitor.
+                        </p>
                     </div>
                 </div>
+
+
+                <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
+                    <div class="flex-grow-1">
+                        
+                        <h3 class="mb-0">Task 3 : GET_TIME_MILLIS</h3>
+                        <p>
+                            Code in the Arduino side:
+                        </p>
+                        <p>
+                            <img src="LAB 1B - task 3 (GET_TIME_MILLIS, PIC 2).png" alt = "LAB 1B - task 3 (GET_TIME_MILLIS, PIC 2)" width=90% />
+                        </p>
+                        <p>
+                            Results in the Python side:
+                        </p>
+                        <p>
+                            <img src="assets/img/LAB 1B - task 3 (GET_TIME_MILLIS).png" alt = "LAB 1B - task 3 (GET_TIME_MILLIS)" width=90% />
+                        </p>
+                        <p>
+                            Before I can begin task 3, I had to declare the command in the command types and in ble.arduino.ino. Once I had that setup in the Arduino side, I did a string that would have "T:", representing time, and then the time in milliseconds (used the built in function). 
+                            I realize now that I should have added the units of time. Even so, in the Python side, I was able to print out string that was sent from the Artemis board.
+                            
+                        </p>
+                    </div>
+                </div>
+
+
+
+                <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
+                    <div class="flex-grow-1">
+                        
+                        <h3 class="mb-0">Task 4 : Notification Handler</h3>
+                        <p>
+                            <img src="LAB 1B - Task 4 (notification handler!).png" alt = "LAB 1B - Task 4 (notification handler!)" width=90% />
+                        </p>
+                        <p>
+                            Notifcation Handler was successful given it was able to print out the string for time without using ble.receive_string(ble.uuid['RX_STRING']) to recieve the string.
+                            As shown below:
+                        </p>
+                        <p>
+                            <img src="LAB 1B - Task 4 (notification handler!, PIC 2).png" alt = "LAB 1B - Task 4 (notification handler!, PIC 2)" width=90% />
+                        </p>
+                        <p>
+                            For the notifcation handler, I essentially printed out the strings, and the when you ran any command (send the command), it would print out the string without having to run the ble.receive_string(ble.uuid['RX_STRING']) command.
+                        </p>
+                    </div>
+                </div>
+
+
+                <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
+                    <div class="flex-grow-1">
+                        
+                        <h3 class="mb-0">Task 5 : GET_TIME_MILLIS</h3>
+                        <p>
+                            Code in the Arduino side:
+                        </p>
+                        <p>
+                            <img src="LAB 1B - task 3 (GET_TIME_MILLIS, PIC 2).png" alt = "LAB 1B - task 3 (GET_TIME_MILLIS, PIC 2)" width=90% />
+                        </p>
+                        <p>
+                            Results in the Python side:
+                        </p>
+                        <p>
+                            <img src="assets/img/LAB 1B - task 3 (GET_TIME_MILLIS).png" alt = "LAB 1B - task 3 (GET_TIME_MILLIS)" width=90% />
+                        </p>
+                        <p>
+                            Before I can begin task 3, I had to declare the command in the command types and in ble.arduino.ino. Once I had that setup in the Arduino side, I did a string that would have "T:", representing time, and then the time in milliseconds (used the built in function). 
+                            I realize now that I should have added the units of time. Even so, in the Python side, I was able to print out string that was sent from the Artemis board.
+                            
+                        </p>
+                    </div>
+                </div>
+
+
+
 
 
 
