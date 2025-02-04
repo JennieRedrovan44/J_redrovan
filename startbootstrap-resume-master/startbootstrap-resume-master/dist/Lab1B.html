@@ -31,7 +31,6 @@
                 <ul class="navbar-nav">
                     <li class="nav-item"><a class="nav-link js-scroll-trigger" href="index.html">About</a></li>
                     <li class="nav-item"><a class="nav-link js-scroll-trigger" href="Lab1A.html">Lab 1A: Artemis</a></li>
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="Lab1B.html">Lab 1B: Bluetooth</a></li>
                     <li class="nav-item"><a class="nav-link js-scroll-trigger" href="Lab1a.html" style="color: rgb(255, 255, 255);">Lab 1B: BLUETOOTH</a></li>
                     <li class="nav-item"><a class="nav-link js-scroll-trigger" href="Lab2.html">Lab 2: IMU</a></li>
                     <li class="nav-item"><a class="nav-link js-scroll-trigger" href="Lab3.html">Lab 3: TOF</a></li>
@@ -48,7 +47,72 @@
             </div>
         </nav>
         <!-- Page Content-->
+        <section class="resume-section" id="about">
+            <div class="resume-section-content">
+                <h2 class="mb-2">Lab 1B : <span class="text-primary">BLUETOOTH</span></h2>
+                <!--Prelab-->
+                <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
+                    <div class="flex-grow-1">
+                        <h3 class="mb-0">Prelab</h3>
+                        <p>
+                            For the Prelab for 1B, I had to install both Python 3 and pip. I had to make sure that I had the latest releases of both Python and pip afterwords (just to be sure!).
+                            I then had to create the A virtual environment and installed Python Packages. I proceeded to download and unzip the codebase into my project directory.
+                            Finally, I started the Jupyter server and read through processing Commands on the Artemis board.
+                            
+                            is a Python environment such that the Python interpreter, libraries and scripts
+                           
+                            Configuration:
+                            By following the configuration instructions, I was able to update the  Artemis MAC Address on my Computer. As shown below:
+                            <p>
+                                <img src="assets/img/LAB 1B -  MAC.png" alt = "LAB 1B -  MAC" width=90% />
+                            </p>
+                            I also was able to generate a new UUID and then replaced BLEService UUID with the generated UUID. As shown below: 
+                            <p>
+                                <img src="assets/img/LAB 1B - BLE_UUID_test_service.png" alt = "LAB 1B - BLE_UUID_test_service" width=90% />
+                            </p>
+                        </p>
+                    </div>
+                </div>
 
+
+                <!--Tasks for Lab 1B-->
+                <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
+                    <div class="flex-grow-1">
+                        
+                        <h3 class="mb-0">Task 1 : ECHO</h3>
+                        <p>
+                            Code in the Arduino side:
+                        </p>
+                        <p>
+                            <img src="assets/img/LAB 1B - task 1 (ECHO, PIC 2).png" alt = "LAB 1B - task 1 (ECHO, PIC 2)" width=90% />
+                        </p>
+                        <p>
+                            Results in the Python side:
+                        </p>
+                        <p>
+                            <img src="assets/img/LAB 1B - task 1 (ECHO, PIC 1).png" alt = "LAB 1B - task 1 (ECHO, PIC 1)" width=90% />
+                        </p>
+
+
+
+
+
+
+                        <p>
+                            In task 1, afer hooking up the Artemis board up to my computer, I tested the board by running the Blink file in the Examples folder. 
+                        </p>
+
+
+                    </div>
+                </div>
+
+
+
+        <!--Tasks for Lab 1A-->
+        <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
+            <div class="flex-grow-1">
+                
+                <h3 class="mb-0">Task 1 : Run Blink</h3>
 
 
 
