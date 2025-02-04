@@ -116,10 +116,13 @@
                             <img src="assets/img/LAB 1B - task 2 (send_three_floats).png" alt = "LAB 1B - task 2 (send_three_floats).png" width=90% />
                         </p>
                         <p>
-                            Results in the Python side:
+                            In the Python side:
                         </p>
                         <p>
                             <img src="assets/img/LAB 1B - task 2 (send_three_floats, PIC 3).png" alt = "send_three_floats, PIC 3" width=90% />
+                        </p>
+                        <p>
+                            <img src="assets/img/LAB 1B - task 2 (send_three_floats, PIC 2).png" alt = "send_three_floats, PIC 2" width=90% />
                         </p>
                         <p>
                             In task 2, I had to program the SEND_THREE_FLOATS command to send three floats from the computer to the artemis board. 
@@ -138,7 +141,7 @@
                             Code in the Arduino side:
                         </p>
                         <p>
-                            <img src="LAB 1B - task 3 (GET_TIME_MILLIS, PIC 2).png" alt = "LAB 1B - task 3 (GET_TIME_MILLIS, PIC 2)" width=90% />
+                            <img src="assets/img/LAB 1B - task 3 (GET_TIME_MILLIS, PIC 2).png" alt = "LAB 1B - task 3 (GET_TIME_MILLIS, PIC 2)" width=90% />
                         </p>
                         <p>
                             Results in the Python side:
@@ -161,14 +164,14 @@
                         
                         <h3 class="mb-0">Task 4 : Notification Handler</h3>
                         <p>
-                            <img src="LAB 1B - Task 4 (notification handler!).png" alt = "LAB 1B - Task 4 (notification handler!)" width=90% />
+                            <img src="assets/img/LAB 1B - Task 4 (notification handler!).png" alt = "LAB 1B - Task 4 (notification handler!)" width=90% />
                         </p>
                         <p>
                             Notifcation Handler was successful given it was able to print out the string for time without using ble.receive_string(ble.uuid['RX_STRING']) to recieve the string.
                             As shown below:
                         </p>
                         <p>
-                            <img src="LAB 1B - Task 4 (notification handler!, PIC 2).png" alt = "LAB 1B - Task 4 (notification handler!, PIC 2)" width=90% />
+                            <img src="assets/img/LAB 1B - Task 4 (notification handler!, PIC 2).png" alt = "LAB 1B - Task 4 (notification handler!, PIC 2)" width=90% />
                         </p>
                         <p>
                             For the notifcation handler, I essentially printed out the strings, and the when you ran any command (send the command), it would print out the string without having to run the ble.receive_string(ble.uuid['RX_STRING']) command.
@@ -185,22 +188,132 @@
                             Code in the Arduino side:
                         </p>
                         <p>
-                            <img src="LAB 1B - task 3 (GET_TIME_MILLIS, PIC 2).png" alt = "LAB 1B - task 3 (GET_TIME_MILLIS, PIC 2)" width=90% />
+                            <img src="assets/img/LAB 1B - Task 5 (TIME_LOOP, PIC 2).png" alt = "LAB 1B - Task 5 (TIME_LOOP, PIC 2)" width=90% />
                         </p>
                         <p>
                             Results in the Python side:
                         </p>
                         <p>
-                            <img src="assets/img/LAB 1B - task 3 (GET_TIME_MILLIS).png" alt = "LAB 1B - task 3 (GET_TIME_MILLIS)" width=90% />
+                            <img src="assets/img/assets/img/LAB 1B - Task 5 (TIME_LOOP).png" alt = "LAB 1B - Task 5 (TIME_LOOP)" width=90% />
                         </p>
                         <p>
-                            Before I can begin task 3, I had to declare the command in the command types and in ble.arduino.ino. Once I had that setup in the Arduino side, I did a string that would have "T:", representing time, and then the time in milliseconds (used the built in function). 
-                            I realize now that I should have added the units of time. Even so, in the Python side, I was able to print out string that was sent from the Artemis board.
+                            In task 5, I created a new command called TIME_LOOP. This command essentially had a start time which would be stored.
+                            In the while loop, it would send a string to the computer of the number of counts and the time in milliseconds for 5 secs. 
+                            Once we had the recieved the string, we can then calculate the effective data transfer rate.
                             
+                            My math: 
+                            Each timestep is a int and therefore each is 2 bytes. 
+                            since there are 128 data points => 128*2 = 256 bytes
+                            number of seconds elapsed is 5 secs
+                            => that 256 bytes/5 secs = 51.2 bytes/sec
                         </p>
                     </div>
                 </div>
 
+
+                <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
+                    <div class="flex-grow-1">
+                        
+                        <h3 class="mb-0">Task 6 : SEND_TIME_DATA</h3>
+                        <p>
+                            Code in the Arduino side:
+                        </p>
+                        <p>
+                            <img src="assets/img/LAB 1B - Task 6 (SEND TIME DATA).png" alt = "LAB 1B - Task 6 (SEND TIME DATA)" width=90% />
+                        </p>
+                        <p>
+                            Results in the Python side:
+                        </p>
+                        <p>
+                            <img src="assets/img/LAB 1B - Task 6 (SEND TIME DATA, PIC 2).png" alt = "LAB 1B - Task 6 (SEND TIME DATA, PIC 2)" width=90% />
+                        </p>
+                        <p>
+                            In task 6, I had to create a new command called SEND_TIME_DATA. I set the time_array to only have 20 elements. 
+                            In the ble.arduino side, I frist set a for loop which would go through 20 elements, and element of the time_array 
+                            time would be stored in the time_array. The time_array would then be sent to the computer through a for loop which 
+                            would go each element and string it.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
+                    <div class="flex-grow-1">
+                        
+                        <h3 class="mb-0">Task 7 : GET_TEMP_READINGS</h3>
+                        <p>
+                            Code in the Arduino side:
+                        </p>
+                        <p>
+                            <img src="assets/img/LAB 1B - Task 7 (GET_TEMP).png" alt = "LAB 1B - Task 7 (GET_TEMP)" width=90% />
+                        </p>
+                        <p>
+                            Results in the Python side:
+                        </p>
+                        <p>
+                            <img src="assets/img/LAB 1B - Task 7 (GET_TEMP PIC 2).png" alt = "LAB 1B - Task 7 (GET_TEMP PIC 2)" width=90% />
+                        </p>
+                        <p>
+                            I implemented the same logic as in task 6, but instead of just storing time, I also stored the temperature readings. 
+                            I created a temp array that is the same size as time_array. I would then string the time and the temperature to be sent 
+                            to the computer.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
+                    <div class="flex-grow-1">
+                        
+                        <h3 class="mb-0">Task 8 : Discussion </h3>
+                        <p>
+                        In the frist method, the disadvange was that it only sent one message to the computer, 
+                        and it was very quick to send the message to the computer (did it in less than a second).
+                        In the second method, the advantage was that you were able to into two arrays and then send the 
+                        values of the arrays to the computer. The disadvange was that it was not as quick as the frist method, 
+                        the time elasdped was 9secs. Please keep in mind in both methods, the arrays were of the same size.
+                        Another advantage is that since it is slower, it may be able to get accurate data, but you will not be able to 
+                        anaylze the data in real-time. The second method has a data transfer rate of ...
+
+                        Each timestep is a float and therefore each is 4 bytes. 
+                        since there are 128 data points => 20*4 = 80 bytes
+                        number of seconds elapsed is 9 secs
+                        => that 80 bytes/9 secs = 8.9  bytes/sec
+
+                        Considering that the Artemis board has 384kB of RAM and a float is 4 bytes, the maximum number of floats that can be stored is 96,000. 
+                        If we consdier the second method, the time_array and temp_array,each 4 bytes, the maximum number of floats that can be stored is 48,000.
+                        </p>
+                    </div>
+                </div>
+
+
+                <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
+                    <div class="flex-grow-1">
+                        
+                        <h3 class="mb-0">Task 6 : Effective Data Rate And Overhead</h3>
+                        <p>
+                            Code in the Arduino side:
+                        </p>
+                        <p>
+                            <img src="assets/img/LAB 1B - Task 5 (TIME_LOOP, PIC 2).png" alt = "LAB 1B - Task 5 (TIME_LOOP, PIC 2)" width=90% />
+                        </p>
+                        <p>
+                            Results in the Python side:
+                        </p>
+                        <p>
+                            <img src="assets/img/assets/img/LAB 1B - Task 5 (TIME_LOOP).png" alt = "LAB 1B - Task 5 (TIME_LOOP)" width=90% />
+                        </p>
+                        <p>
+                            In task 5, I created a new command called TIME_LOOP. This command essentially had a start time which would be stored.
+                            In the while loop, it would send a string to the computer of the number of counts and the time in milliseconds for 5 secs. 
+                            Once we had the recieved the string, we can then calculate the effective data transfer rate.
+                            
+                            My math: 
+                            Each timestep is a int and therefore each is 2 bytes. 
+                            since there are 128 data points => 128*2 = 256 bytes
+                            number of seconds elapsed is 5 secs
+                            => that 256 bytes/5 secs = 51.2 bytes/sec
+                        </p>
+                    </div>
+                </div>
 
 
 
