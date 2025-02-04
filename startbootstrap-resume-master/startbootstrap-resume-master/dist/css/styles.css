@@ -10970,3 +10970,19 @@ section.resume-section .resume-section-content {
     padding-bottom: 5rem;
   }
 }
+/* Scrollable navbar */
+#sideNav {
+    overflow-y: auto; /* Enable vertical scrolling */
+    max-height: 100vh; /* Limit the height to the viewport */
+    scrollbar-width: thin; /* Optional: for smaller scrollbars in Firefox */
+    -ms-overflow-style: none; /* Optional: hide scrollbar for IE/Edge */
+}
+
+#sideNav::-webkit-scrollbar {
+    width: 6px; /* Optional: smaller scrollbar width */
+}
+
+#sideNav::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.5); /* Optional: scrollbar color */
+    border-radius: 10px; /* Optional: rounded scrollbar */
+}
