@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Lab 1B</title>
+    <link href="css/styles.css" rel="stylesheet" />
+</head>
+<body>
+    <nav>
+        <a href="index.html">Home</a> | 
+        <a href="lab1a.html">Lab 1A</a> | 
+        <a href="lab1b.html">Lab 1B</a>
+    </nav>
+    <h1>Lab 1B</h1>
+    <p>Content for Lab 1B goes here...</p>
+</body>
+</html>
