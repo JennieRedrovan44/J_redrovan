@@ -194,7 +194,7 @@
                             Results in the Python side:
                         </p>
                         <p>
-                            <img src="assets/img/assets/img/LAB 1B - Task 5 (TIME_LOOP).png" alt = "LAB 1B - Task 5 (TIME_LOOP)" width=90% />
+                            <img src="assets/img/LAB 1B - Task 5 (TIME_LOOP).png" alt = "LAB 1B - Task 5 (TIME_LOOP)" width=90% />
                         </p>
                         <p>
                             In task 5, I created a new command called TIME_LOOP. This command essentially had a start time which would be stored.
@@ -288,29 +288,65 @@
                 <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
                     <div class="flex-grow-1">
                         
-                        <h3 class="mb-0">Task 6 : Effective Data Rate And Overhead</h3>
+                        <h3 class="mb-0">Task 9 : Effective Data Rate And Overhead</h3>
                         <p>
                             Code in the Arduino side:
                         </p>
                         <p>
-                            <img src="assets/img/LAB 1B - Task 5 (TIME_LOOP, PIC 2).png" alt = "LAB 1B - Task 5 (TIME_LOOP, PIC 2)" width=90% />
+                            <img src="assets/img/LAB 1B - Addiontional 5000 #1 pIC2.png" alt = "LAB 1B - Addiontional 5000 #1 pIC2" width=90% />
                         </p>
                         <p>
                             Results in the Python side:
                         </p>
                         <p>
-                            <img src="assets/img/assets/img/LAB 1B - Task 5 (TIME_LOOP).png" alt = "LAB 1B - Task 5 (TIME_LOOP)" width=90% />
+                            <img src="assets/img/assets/img/LAB 1B - Addiontional 5000 #1 pIC3.png" alt = "LAB 1B - Addiontional 5000 #1 pIC3" width=90% />
                         </p>
                         <p>
-                            In task 5, I created a new command called TIME_LOOP. This command essentially had a start time which would be stored.
-                            In the while loop, it would send a string to the computer of the number of counts and the time in milliseconds for 5 secs. 
-                            Once we had the recieved the string, we can then calculate the effective data transfer rate.
+                            <img src="assets/img/assets/img/LAB 1B - Addiontional 5000 #1.png" alt = "LAB 1B - Addiontional 5000 #13" width=90% />
+                        </p>
+
+                        <p>
+                            Here I used the char which is 1 byte, and manually would urmom (length is 5) at different sizes. For example, two "urmom" is 10 bytes.
+                            From there I would send the string to the computer. For reference, the frist numbers is the end of time, the middle number is the byte, and the third 
+                            number is the start of time. From there, I would then calculate the effective data rate manually and graph it. In the graph, it shows 
+                            as the number of bytes sent to the Artemis board increases, the effective data rate increases. 
+
+                            Do many short packets introduce a lot of overhead?Do larger replies help to reduce overhead?
+                            Yes to both, as shown above in the graph, shorter packets have a lower effective data rate compared to larger replies.
+                            Larger replies helps to reduce the overhead given that it is able to send more data in one packet compared to short packets.
                             
-                            My math: 
-                            Each timestep is a int and therefore each is 2 bytes. 
-                            since there are 128 data points => 128*2 = 256 bytes
-                            number of seconds elapsed is 5 secs
-                            => that 256 bytes/5 secs = 51.2 bytes/sec
+
+                            
+                            
+                        </p>
+                    </div>
+                </div>
+
+                <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
+                    <div class="flex-grow-1">
+                        
+                        <h3 class="mb-0">Task 10 : Reliability</h3>
+                        <p>
+                        What occurs when you send data at a higher rate from the robot to the 
+                        computer is that I think the computer won't be able to keep up with the 
+                        data transfer rate. When I tried to go at a higher buad rate, my computer 
+                        crashed out. 
+
+                        </p>
+                    </div>
+                </div>
+
+                
+                <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
+                    <div class="flex-grow-1">
+                        
+                        <h3 class="mb-0">Task 10 : Reliability</h3>
+                        <p>
+                        So the hardest concept for me to understand was the notifcation handler, I didn't understand the purpose 
+                        or what it was suppose to do. However, after playing around and trying to figure out what it did, I was able 
+                        to understand so much more! Also, I struggled a lot. I am not use to working creating a website or even the different types
+                        of connectors that we needed for this lab. I hope that in the future, I won't have to worry about downloading and I can just 
+                        focus on the code. 
                         </p>
                     </div>
                 </div>
