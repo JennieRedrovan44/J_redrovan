@@ -69,42 +69,129 @@
                     1. I installed the SparkFun 9DOF IMU Breakout_ICM 20948_Arduino Library into the Arduino IDE. 
                 </p>
                 <p>
-                    2. Show that the IMU example code works
-                        took a video of the IMU working
+                    2. Artemis IMU connections:
                 </p>
                 <p>
-                    3.Note the AD0_VAL definition. What does it represent, and should it be 0 or 1?
-                    // On the SparkFun 9DoF IMU breakout the default is 1, and when the ADR jumper is closed the value becomes 0
-                    #define AD0_VAL 1
-                    why is it 1?
+                    <img src="assets/img_lab2/set_up_connection.png" alt = "set_up_connection" width=90% />
                 </p>
                 <p>
-                    4. Acceleration and gyroscope data discussion (pictures recommended)
-                    took a video in my phone 
+                    3. IMU example code works
                 </p>
+                <body>
+                    <iframe
+                        width="560"
+                        height="315"
+                        src="https://www.youtube.com/embed/6u1Vur823zc"
+                        title="YouTube video player"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowfullscreen>
+                    </iframe>
+                </body>
+                <body>
+                    <iframe
+                        width="560"
+                        height="315"
+                        src="https://www.youtube.com/embed/3hvMik6"
+                        title="YouTube video player"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowfullscreen>
+                    </iframe>
+                </body>
+                <p> 
+                    3a. AD0_VAL definition. What does it represent, and should it be 0 or 1?
+                </p>
+                <p>
+                    The AD0_VAL represents the last but of the I2C address. It should be 0 since the ADR jumper is closed; however, this depents on wheater the ADR jumper is open or closed for it be either 0 or 1.
+                </p>
+                <p>
+                    3b. Explanation of what I see in both acceleration and gyroscope data
+                </p>
+                <p>
+                    As I moved the IMU board, I noticed that when I moved the IMU in the positive direction 
+                    of the respective axis, the accelerometer increase in value. When I moved the IMU in the 
+                    negative direction of the respective axis, the accelerometer decrease in value and became 
+                    negative. Also, for the gyroscope, I noticed when I did the pitch, roll, and yaw, it also 
+                    changed in value.  
+                </p>
+
                 <p>
                     5. Video of the Arthemis blinking
-                <p>
 
                 </p>
+                <body>
+                    <iframe
+                        width="560"
+                        height="315"
+                        src="https://www.youtube.com/embed/DyjrG7W4yVg"
+                        title="YouTube video player"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowfullscreen>
+                    </iframe>
+                </body>
                 
                 <h3 class="mb-0">Task 2 : Accelerometer</h3>
-
                 <p>
-                    Image of output at {-90, 0, 90} degrees for pitch and roll (include equations)
+                1. Equations for Pitch and Roll
+                </p>
+                <p>
+                    pitch_a = atan2(myICM.accX(),myICM.accZ())*180/M_PI; 
+                    roll_a  = atan2(myICM.accY(),myICM.accZ())*180/M_PI; 
+                </p>
+                <p>
+                    1a. Output at {-90, 0, 90} degrees for pitch and roll 
+                </p>
+                <body>
+                    <iframe
+                        width="560"
+                        height="315"
+                        src="https://www.youtube.com/embed/Za70EGz3A"
+                        title="YouTube video player"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowfullscreen>
+                    </iframe>
+                </body>
+                <p>
+                    1b. How accurate is your accelerometer?
+                </p>
+                <p>
+                    <img src="assets/img_lab2/accelerometer_pitchandroll_0deg.png" alt = "accelerometer_pitchandroll_0deg" width=90% />
+                </p>
+                <p>
+                    <img src="assets/img_lab2/accelerometer_pitch_n90.png" alt = "accelerometer_pitch_n90" width=90% />
+                </p>
+                <p>
+                    <img src="assets/img_lab2/accelerometer_roll_n90.png" alt = "accelerometer_roll_n90" width=90% />
+                </p>
+                <p>
+                    In the images above, the accelerometer is not super accurate, but it is close to the actual value. The values 
+                    are not too far off from the expected value as calculated from the standard. However, there is a slight
+                    chance when I was holding the IMU board, I might have tilted a little bit, which could have caused the slight difference in the
+                    measured value and the actual value.
+                </p>
+                <p>
+                    2. Fourier Transform of accelerometer data without noise 
+                </p>
+                <p>
+                    <img src="assets/img_lab2/accelerometer_pitchandroll_0deg_fourier.png" alt = "accelerometer_fourier" width=90% />
                 </p>
 
                 <p>
-                    How accurate is your accelerometer?
-                    Add image of the output, but the accemlerimeter is pretty accurate
+                    Fourier Transform of accelerometer data with noise 
                 </p>
                 <p>
-                    frequency spectrum 
-                    add image of the output
-                    what a good cutoff frequency?
-                    Not sure.
+                    <img src="assets/img_lab2/accelerometer_pitchandroll_0deg_fourier_noise.png" alt = "accelerometer_fourier" width=90% />
+                </p>
+                <p>
+                    A good cutoff frequency is 10 Hz given that the bigger spikes occur near 0hz.
                 </p>
                 <h4 class="mb-0">Applying Low Pass Filter</h3>
+                <p>
+                    <img src="assets/img_lab2/accelerometer_Low_pass_alpha_.38.png" alt = "accelerometer_fourier" width=90% />
+                </p>
                     
                 
 
