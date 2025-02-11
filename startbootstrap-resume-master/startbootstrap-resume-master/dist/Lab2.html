@@ -75,6 +75,9 @@
                     <img src="assets/img_lab2/set_up_connection.png" alt = "set_up_connection" width=90% />
                 </p>
                 <p>
+                    As seen above, I connected my Artemis to the IMU board QWIIC connectors. I connected to the I2C port of the IMU board.
+                </p>
+                <p>
                     3. IMU example code works
                 </p>
                 <body>
@@ -99,6 +102,10 @@
                         allowfullscreen>
                     </iframe>
                 </body>
+                <p>
+                    As shown above, the IMU example code works. The IMU board is able to read the acceleration and gyroscope data.
+                    How I did was, I ran the code and decreased the baud to 9600 to be able to see the data more easily. 
+                </p>
                 <p> 
                     3a. AD0_VAL definition. What does it represent, and should it be 0 or 1?
                 </p>
@@ -131,8 +138,32 @@
                         allowfullscreen>
                     </iframe>
                 </body>
+                <p>
+                    How I was able to add the blinking LED was to add the following code:
+                    </p>
+                    <p>
+                    digitalWrite(LED_BUILTIN, HIGH);  // turn the LED on (HIGH is the voltage level)
+                    delay(1000);                      // wait for a second
+                    digitalWrite(LED_BUILTIN, LOW);   // turn the LED off by making the voltage LOW
+                    delay(1000);                      // wait for a second
+                    digitalWrite(LED_BUILTIN, HIGH);  // turn the LED on (HIGH is the voltage level)
+                    delay(1000);                      // wait for a second
+                    digitalWrite(LED_BUILTIN, LOW);   // turn the LED off by making the voltage LOW
+                    delay(1000);         
+                    digitalWrite(LED_BUILTIN, HIGH);  // turn the LED on (HIGH is the voltage level)
+                    delay(1000);                      // wait for a second
+                    digitalWrite(LED_BUILTIN, LOW);   // turn the LED off by making the voltage LOW
+                    delay(1000);      
+                </p>
+                <p>
+                    I added the code above to the void setup() function. 
+                </p>
                 
                 <h3 class="mb-0">Task 2 : Accelerometer</h3>
+                <p>
+                    The accelerometer is measured in the X, Y, and Z axis. Using the geometry 
+                    and the conversions used in class, I was able to calculate the pitch and roll as shown below:
+                </p>
                 <p>
                 1. Equations for Pitch and Roll
                 </p>
@@ -155,7 +186,105 @@
                     </iframe>
                 </body>
                 <p>
+                    As shown above, I was able to output the pitch and roll. I commented out some of the code like the gyroscope data to be able to 
+                    see only the pitch and roll. From here, I was able to move the IMU board so that it can output 
+                    -90 for pitch and for roll +90. However, there was slight human error 
+                    becuase I had to move it slighlty to be able to get it accurate. 
+                </p>
+                <p>
                     1b. How accurate is your accelerometer?
+                </p>
+                <p>
+                    For the plots below, I was able to get the following values for pitch and roll by essentially adding the code from Lecture 4 into the BLE_arduino code.
+                    From there I added a case, SEND_PITCH_ROLL, which would send the pitch, roll, and time values to jupyter notebook. In the jupyter notebook, I was able to plot the pitch and roll values by breaking the 
+                    string into a list and then plotting the values.
+                </p>
+                <p>
+                    Code for case SEND_PITCH_ROLL:
+                </p>
+                <p>
+                    Serial.println( "I started"); 
+                    for ( i = 0; i < 500; i++) {
+            
+                    if(myICM.dataReady())
+                    {
+                      myICM.getAGMT();                // The values are only updated when you call 'getAGMT
+                    }
+                      pitch_array[i] = atan2(myICM.accX(),myICM.accZ())*180/M_PI; 
+                      roll_array[i] =  atan2(myICM.accY(),myICM.accZ())*180/M_PI;  
+                      time_array[i] = (float) millis();
+            
+                      /*
+                      //NB: Setup Serialplot Y axis [-180 180]
+                      Serial.print("lower_limit:");
+                      Serial.print(-200);
+                      Serial.print(", upper_limit:");
+                      Serial.print(200);
+                      */
+                      pitch_a = atan2(myICM.accX(),myICM.accZ())*180/M_PI; 
+                      roll_a  = atan2(myICM.accY(),myICM.accZ())*180/M_PI; 
+                      Serial.print("pitch_a:");
+                      Serial.print(pitch_a);
+                      Serial.print("| roll_a:");
+                      Serial.println(roll_a);
+                      // Serial.print("| time (ms)");
+                      // Serial.println((float) millis());
+            
+                      delay(100);
+            
+                      //Serial.println(roll_a); //FOR THE SECOND DEMO, COMMENT OUT LINE FOR THIRD DEMO
+                      //Serial.print(roll_a); //FOR THE THIRD DEMO, COMMENT OUT LINE FOR SECOND DEMO
+                    }
+                    
+                    for ( j = 0; j < 500; j++) {
+                      tx_estring_value.clear();
+                      tx_estring_value.append("PITCH: ");
+                      tx_estring_value.append(pitch_array[j]);
+                      tx_estring_value.append(" | ");
+                      tx_estring_value.append("ROLL: ");
+                      tx_estring_value.append(roll_array[j]);
+                      tx_estring_value.append(" | ");
+                      tx_estring_value.append("time: ");
+                      tx_estring_value.append(time_array[j]);
+                      tx_characteristic_string.writeValue(tx_estring_value.c_str());
+                    }
+            
+            
+                    Serial.println("IT WORKED YAYAYAYY!");
+            
+            
+                    break;
+                </p>
+                <p>
+                    Jupyter Notebook Code:
+                </p>
+                <p>
+                    time = np.array(time, dtype=float)
+
+mean_pitch=np.sum(pitch)/len(pitch)
+mean_roll=np.sum(roll)/len(roll)
+#print(f' Mean Pitch = {mean_pitch}') 
+print(f' Mean Roll = {mean_roll}')
+
+stdev_pitch = statistics.stdev(pitch)
+stdev_roll = statistics.stdev(roll)
+#print(f' Stdev Pitch = {stdev_pitch}') 
+print(f' Stdev Roll = {stdev_roll}') 
+
+# Plotting
+plt.figure(figsize=(8, 6))
+#plt.plot(time, pitch, 'r-', label='Pitch (-90 deg)')
+plt.plot(time, roll, 'b-', label='Roll (-90 deg)')
+
+plt.xlabel('Time (ms)')
+plt.ylabel('Amplitude (degree)')
+plt.legend(loc='right')
+
+plt.xticks(rotation=45)  # Rotate x-axis labels
+plt.locator_params(axis='x', nbins=10)  # Reduce number of x-axis ticks
+
+plt.show()
+
                 </p>
                 <p>
                     <img src="assets/img_lab2/accelerometer_pitchandroll_0deg.png" alt = "accelerometer_pitchandroll_0deg" width=90% />
@@ -172,6 +301,7 @@
                     chance when I was holding the IMU board, I might have tilted a little bit, which could have caused the slight difference in the
                     measured value and the actual value.
                 </p>
+
                 <p>
                     2. Fourier Transform of accelerometer data without noise 
                 </p>
@@ -186,6 +316,56 @@
                     <img src="assets/img_lab2/accelerometer_pitchandroll_0deg_fourier_noise.png" alt = "accelerometer_fourier" width=90% />
                 </p>
                 <p>
+                    Here, I applied the Fourier Transform to the accelerometer data. I followed the process given by the article and applied it. 
+                </p>
+                <p>
+                Serial.println( "I started FOURIER"); 
+                unsigned long start_time_FFT=millis();
+
+                i=0;
+
+        while ((millis()-start_time_FFT)<10000){
+          
+          if(myICM.dataReady())
+          {
+            myICM.getAGMT();                // The values are only updated when you call 'getAGMT
+          }
+
+          Serial.println(i); 
+          if (i < 1000) {  // Prevent array overflow
+            //Serial.println( "loop is working for i<500"); 
+            pitch_a = atan2(myICM.accX(),myICM.accZ())*180/M_PI; 
+            roll_a  = atan2(myICM.accY(),myICM.accZ())*180/M_PI; 
+            pitch_array[i] = pitch_a;
+            roll_array[i] = roll_a;
+            time_array[i] = (float)((millis() - start_time_FFT));
+            i++;
+            delay(6);
+          }
+
+          if ((millis()-start_time_FFT)>=5000){
+            Serial.println("turn right now");
+          }
+          
+        }
+        for ( i = 0; i < 1000; i++) {
+          Serial.println( "SENDING STRING"); 
+          tx_estring_value.clear();
+          tx_estring_value.append("PITCH: ");
+          tx_estring_value.append(pitch_array[i]);
+          tx_estring_value.append(" | ");
+          tx_estring_value.append("ROLL: ");
+          tx_estring_value.append(roll_array[i]);
+          tx_estring_value.append(" | ");
+          tx_estring_value.append("time: ");
+          tx_estring_value.append(time_array[i]);
+          tx_characteristic_string.writeValue(tx_estring_value.c_str());
+        }
+        Serial.println("IT WORKED YAYAYAYY FOR FOURIER!");
+        break;
+      }
+                </p>
+                <p>
                     A good cutoff frequency is 10 Hz given that the bigger spikes occur near 0hz.
                 </p>
                 <h4 class="mb-0">Applying Low Pass Filter</h3>
@@ -196,11 +376,6 @@
                 
 
 
-
-
-                <p>
-                    In task 1, afer hooking up the Artemis board up to my computer, I tested the board by running the Blink file in the Examples folder. 
-                </p>
 
 
             </div>
