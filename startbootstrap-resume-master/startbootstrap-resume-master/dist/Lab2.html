@@ -272,7 +272,7 @@
                     For complenmentary, I used the following equations: 
                 </p>
                 <p>
-                    <img src="assets/img_lab2/comp_eqautions.png.png" alt = "low_pass_arduino" width=90% />
+                    <img src="assets/img_lab2/comp_eqautions.png" alt = "low_pass_arduino" width=90% />
                 </p>
                 <p>
                     Below are the plots of the gyroscope data: 
@@ -285,12 +285,24 @@
                 </p>
                 <p>
                     From the output,I noticed tha for pitch and roll they are pretty similar and the filtered response is more smooth and defined compared to the raw 
-                    data. For yaw, it is a slope, and I did not do the complementary filter for it becuase the accelerometer is not able to measure the yaw.
+                    data. For yaw, it is a slope, and I did not do the complementary filter for it becuase the accelerometer is not able to measure the yaw. For the complementary
+                    it follows the same trend as the pitch and roll raw and the filtered response. Which shows that there is not much drift. 
                 </p>
                 
 
                 <h3 class="mb-0">Task 4 : Sample Data!</h3>
-                
+                <p>
+                    By getting rid of the delay(10)in the code, I was able to get the sample rate to increase from 100 samples/sec to around 370 samples/sec.
+                    Similar to Lab 1, I am using a while loop to collect the data and then send it to the jupyter notebook, there is initialization of data and it stops once
+                    it hits the size of the array. 
+                    A way that I can store data, is that instead of included Roll: (then some number) and etc, I will send a string of the data and then split it in the jupyter notebook.
+                    This will allow me to not use much of Arthemis's memory. I figured this out for the gryoscope part becuase I it was running out of memory, but when I 
+                    did this method that I talked about above of just sending | pitch | roll | yaw | time |, it was able to store the data without running out. Also, I would personally say 
+                    that it was much quicker as well. 
+                </p>
+            
+
+
 
 
                 <p>
