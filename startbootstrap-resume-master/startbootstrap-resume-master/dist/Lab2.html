@@ -140,20 +140,9 @@
                 </body>
                 <p>
                     How I was able to add the blinking LED was to add the following code:
-                    </p>
-                    <p>
-                    digitalWrite(LED_BUILTIN, HIGH);  // turn the LED on (HIGH is the voltage level)
-                    delay(1000);                      // wait for a second
-                    digitalWrite(LED_BUILTIN, LOW);   // turn the LED off by making the voltage LOW
-                    delay(1000);                      // wait for a second
-                    digitalWrite(LED_BUILTIN, HIGH);  // turn the LED on (HIGH is the voltage level)
-                    delay(1000);                      // wait for a second
-                    digitalWrite(LED_BUILTIN, LOW);   // turn the LED off by making the voltage LOW
-                    delay(1000);         
-                    digitalWrite(LED_BUILTIN, HIGH);  // turn the LED on (HIGH is the voltage level)
-                    delay(1000);                      // wait for a second
-                    digitalWrite(LED_BUILTIN, LOW);   // turn the LED off by making the voltage LOW
-                    delay(1000);      
+                </p>
+                <p>
+                    <img src="assets/img_lab2/blink.png" alt = "BLINK" width=90% />
                 </p>
                 <p>
                     I added the code above to the void setup() function. 
@@ -168,8 +157,7 @@
                 1. Equations for Pitch and Roll
                 </p>
                 <p>
-                    pitch_a = atan2(myICM.accX(),myICM.accZ())*180/M_PI; 
-                    roll_a  = atan2(myICM.accY(),myICM.accZ())*180/M_PI; 
+                    <img src="assets/img_lab2/Pitch_roll_equ.png" alt = "equations" width=90% />
                 </p>
                 <p>
                     1a. Output at {-90, 0, 90} degrees for pitch and roll 
@@ -203,88 +191,13 @@
                     Code for case SEND_PITCH_ROLL:
                 </p>
                 <p>
-                    Serial.println( "I started"); 
-                    for ( i = 0; i < 500; i++) {
-            
-                    if(myICM.dataReady())
-                    {
-                      myICM.getAGMT();                // The values are only updated when you call 'getAGMT
-                    }
-                      pitch_array[i] = atan2(myICM.accX(),myICM.accZ())*180/M_PI; 
-                      roll_array[i] =  atan2(myICM.accY(),myICM.accZ())*180/M_PI;  
-                      time_array[i] = (float) millis();
-            
-                      /*
-                      //NB: Setup Serialplot Y axis [-180 180]
-                      Serial.print("lower_limit:");
-                      Serial.print(-200);
-                      Serial.print(", upper_limit:");
-                      Serial.print(200);
-                      */
-                      pitch_a = atan2(myICM.accX(),myICM.accZ())*180/M_PI; 
-                      roll_a  = atan2(myICM.accY(),myICM.accZ())*180/M_PI; 
-                      Serial.print("pitch_a:");
-                      Serial.print(pitch_a);
-                      Serial.print("| roll_a:");
-                      Serial.println(roll_a);
-                      // Serial.print("| time (ms)");
-                      // Serial.println((float) millis());
-            
-                      delay(100);
-            
-                      //Serial.println(roll_a); //FOR THE SECOND DEMO, COMMENT OUT LINE FOR THIRD DEMO
-                      //Serial.print(roll_a); //FOR THE THIRD DEMO, COMMENT OUT LINE FOR SECOND DEMO
-                    }
-                    
-                    for ( j = 0; j < 500; j++) {
-                      tx_estring_value.clear();
-                      tx_estring_value.append("PITCH: ");
-                      tx_estring_value.append(pitch_array[j]);
-                      tx_estring_value.append(" | ");
-                      tx_estring_value.append("ROLL: ");
-                      tx_estring_value.append(roll_array[j]);
-                      tx_estring_value.append(" | ");
-                      tx_estring_value.append("time: ");
-                      tx_estring_value.append(time_array[j]);
-                      tx_characteristic_string.writeValue(tx_estring_value.c_str());
-                    }
-            
-            
-                    Serial.println("IT WORKED YAYAYAYY!");
-            
-            
-                    break;
+                    <img src="assets/img_lab2/SEND_PITCH_ROLL.png" alt = "SEND_PITCH_ROLL" width=90% />
                 </p>
                 <p>
                     Jupyter Notebook Code:
                 </p>
                 <p>
-                    time = np.array(time, dtype=float)
-
-mean_pitch=np.sum(pitch)/len(pitch)
-mean_roll=np.sum(roll)/len(roll)
-#print(f' Mean Pitch = {mean_pitch}') 
-print(f' Mean Roll = {mean_roll}')
-
-stdev_pitch = statistics.stdev(pitch)
-stdev_roll = statistics.stdev(roll)
-#print(f' Stdev Pitch = {stdev_pitch}') 
-print(f' Stdev Roll = {stdev_roll}') 
-
-# Plotting
-plt.figure(figsize=(8, 6))
-#plt.plot(time, pitch, 'r-', label='Pitch (-90 deg)')
-plt.plot(time, roll, 'b-', label='Roll (-90 deg)')
-
-plt.xlabel('Time (ms)')
-plt.ylabel('Amplitude (degree)')
-plt.legend(loc='right')
-
-plt.xticks(rotation=45)  # Rotate x-axis labels
-plt.locator_params(axis='x', nbins=10)  # Reduce number of x-axis ticks
-
-plt.show()
-
+                    <img src="assets/img_lab2/SEND_PITCH_ROLL_JN.png" alt = "SEND_PITCH_ROLL" width=90% />
                 </p>
                 <p>
                     <img src="assets/img_lab2/accelerometer_pitchandroll_0deg.png" alt = "accelerometer_pitchandroll_0deg" width=90% />
@@ -319,51 +232,7 @@ plt.show()
                     Here, I applied the Fourier Transform to the accelerometer data. I followed the process given by the article and applied it. 
                 </p>
                 <p>
-                Serial.println( "I started FOURIER"); 
-                unsigned long start_time_FFT=millis();
-
-                i=0;
-
-        while ((millis()-start_time_FFT)<10000){
-          
-          if(myICM.dataReady())
-          {
-            myICM.getAGMT();                // The values are only updated when you call 'getAGMT
-          }
-
-          Serial.println(i); 
-          if (i < 1000) {  // Prevent array overflow
-            //Serial.println( "loop is working for i<500"); 
-            pitch_a = atan2(myICM.accX(),myICM.accZ())*180/M_PI; 
-            roll_a  = atan2(myICM.accY(),myICM.accZ())*180/M_PI; 
-            pitch_array[i] = pitch_a;
-            roll_array[i] = roll_a;
-            time_array[i] = (float)((millis() - start_time_FFT));
-            i++;
-            delay(6);
-          }
-
-          if ((millis()-start_time_FFT)>=5000){
-            Serial.println("turn right now");
-          }
-          
-        }
-        for ( i = 0; i < 1000; i++) {
-          Serial.println( "SENDING STRING"); 
-          tx_estring_value.clear();
-          tx_estring_value.append("PITCH: ");
-          tx_estring_value.append(pitch_array[i]);
-          tx_estring_value.append(" | ");
-          tx_estring_value.append("ROLL: ");
-          tx_estring_value.append(roll_array[i]);
-          tx_estring_value.append(" | ");
-          tx_estring_value.append("time: ");
-          tx_estring_value.append(time_array[i]);
-          tx_characteristic_string.writeValue(tx_estring_value.c_str());
-        }
-        Serial.println("IT WORKED YAYAYAYY FOR FOURIER!");
-        break;
-      }
+                    <img src="assets/img_lab2/Fourier.png" alt = "Fourier" width=90% />
                 </p>
                 <p>
                     A good cutoff frequency is 10 Hz given that the bigger spikes occur near 0hz.
@@ -373,10 +242,7 @@ plt.show()
                     <img src="assets/img_lab2/accelerometer_Low_pass_alpha_.38.png" alt = "accelerometer_fourier" width=90% />
                 </p>
                     
-                
-
-
-
+            
 
             </div>
 
