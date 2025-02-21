@@ -47,6 +47,28 @@
             </div>
         </nav>
         <!-- Page Content-->
+        <section class="resume-section" id="about">
+            <div class="resume-section-content">
+                <h2 class="mb-2">Lab 3 : <span class="text-primary">TOF</span></h2>
+                <!--Prelab-->
+                <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
+                    <div class="flex-grow-1">
+                        <h3 class="mb-0">Prelab</h3>
+                        <p>
+                        Before going into the lab, I planned out how to connect the ToF sensor to the Artemis board. I used the following connections: <br><br>
+                        add image of setup 
+                        <img src="assets/img_lab2/set_up_connection.png" alt = "set_up_connection" width=90% /><br><br>
+                        Since we have two ToF sensors, both will have the same I2C address by default. Since we cannot have two 
+                        devices with the same address on the same bus, we need to change the address of one of the sensors. <br>
+                        The I2C bus (Inter-Integrated Circuit) is a form of communication between multiple devices by using serial (bit by bit)
+                        communication. Essentially, the master device is the Arthemis board and it sends a message, and the slave devices, like the ToF, has a address to which it 
+                        recognizes adn then it responds back. In simplier terms, the master device asks the slave device for data, the slave device sends the data back to the master device. <br><br>
+                        However, each slave device, the two ToFs, must have a unique address. How I will ensure that both ToF have different address is I will wire a the XSHUT pin to one of the Arthemis GPIO pin. 
+                        Then, I will distable on of the ToF by setting the GPIO pin to low (0), and then I will change it's address and then turn it back on. By doing this 
+                        the ToF that is disabled will have a different address than the ToF that is enabled. <br><br>
+                        </p>
+                    </div>
+                </div>
 
 
 
