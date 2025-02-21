@@ -64,7 +64,7 @@
                         communication. Essentially, the master device is the Arthemis board and it sends a message, and the slave devices, like the ToF, has a address to which it 
                         recognizes adn then it responds back. In simplier terms, the master device asks the slave device for data, the slave device sends the data back to the master device. <br><br>
                         However, each slave device, the two ToFs, must have a unique address. How I will ensure that both ToF have different address is I will wire a the XSHUT pin to one of the Arthemis GPIO pin. 
-                        Then, I will distable on of the ToF by setting the GPIO pin to low (0), and then I will change it's address and then turn it back on. By doing this 
+                        Then, I will disable on of the ToF by setting the GPIO pin to low (0), and then I will change it's address and then turn it back on. By doing this 
                         the ToF that is disabled will have a different address than the ToF that is enabled. <br><br>
                         What I am currently planning to place the ToF in front and the back of the car. The reason why I think this would 
                         a better choice because this allows the car to detect objects in front of it and behind it. This is important because 
