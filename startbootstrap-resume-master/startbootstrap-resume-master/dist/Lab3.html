@@ -61,16 +61,15 @@
                         Since we have two ToF sensors, both will have the same I2C address by default. Since we cannot have two 
                         devices with the same address on the same bus, we need to change the address of one of the sensors. <br><br>
                         The I2C bus (Inter-Integrated Circuit) is a form of communication between multiple devices by using serial (bit by bit)
-                        communication. Essentially, the master device is the Arthemis board and it sends a message, and the slave devices, like the ToF, has a address to which it 
-                        recognizes adn then it responds back. In simplier terms, the master device asks the slave device for data, the slave device sends the data back to the master device. <br><br>
-                        However, each slave device, the two ToFs, must have a unique address. How I will ensure that both ToF have different address is I will wire a the XSHUT pin to one of the Arthemis GPIO pin. 
-                        Then, I will disable on of the ToF by setting the GPIO pin to low (0), and then I will change it's address and then turn it back on. By doing this 
+                        communication. Essentially, the master device is the Artemis board and it sends a message, and the slave devices, like the ToF, has a address which it recognizes and then responds to. In simplier terms, the master device asks the slave device for data, the slave device sends the data back to the master device. <br><br>
+                        However, each slave device, the two ToFs, must have a unique address. How I will ensure that both ToF have different address is I will wire the XSHUT pin to one of the Artemis GPIO pin. 
+                        Then, I will disable one of the ToF sensors by setting the GPIO pin low (0), then change its address before turning it back on.By doing this 
                         the ToF that is disabled will have a different address than the ToF that is enabled. <br><br>
                         What I am currently planning to place the ToF in front and the back of the car. The reason why I think this would 
                         a better choice because this allows the car to detect objects in front of it and behind it. This is important because 
                         if the car is going forward and it detects an object in front of it, it can stop. If the car is going backwards and it detects an object behind it. 
                         A concern that I do have is it may not be able to detect its blind side or obstacles. However, I think this is a good start to 
-                        where the ToF can potentally go. Another position would be side and front, but it won't be to detect the back. I will have to think about this 
+                        where the ToF can potentially go. Another position would be side and front, but it won't be able to detect the back. I will have to think about this 
                         more as I go through the lab. 
                         </p>
                     </div>
@@ -93,7 +92,7 @@
                             I soldered the JST connector to the 650mAh batteries to which I then used to 
                             power the Artemis. I then tested commands from lab 1 to check the BLE connection
                             by powering the Artemis with just the battery, as shown above!<br><br>
-                            I also included some pictures battery connected to the Arthemis board!
+                            I also included some pictures battery connected to the Artemis board!
                             <img src="assets/img_lab3/IMG_5903.jpg" alt = "set_up_connection" width=90% /><br>
                             <img src="assets/img_lab3/IMG_5904.jpg" alt = "set_up_connection" width=90% />
                         </p>
@@ -104,7 +103,7 @@
                         <h3 class="mb-0">Task 2: Connect the ToF sensor to the QWICC breakout board</h3>
                         
                         <p>
-                        In order to connect the ToF sensior to the Arthemis, I soldered the longer QWIIC cable to the pads of the 
+                        In order to connect the ToF sensior to the Artemis, I soldered the longer QWIIC cable to the pads of the 
                         ToF board. <br>
                         red wire    -> Vin <br>
                         black wire  -> Vout <br>
@@ -136,17 +135,14 @@
                         <h3 class="mb-0">Task 4: ToF Sensor</h3>
                         <h4 class="mb-0">Sensor Mode Discussion </h4>
                         <p>
-                            Using Sparkfun VL53L1X Arudino family, I saw that it can only support two modes, which are short and long. I was able to lookup the 
+                            Using the SparkFun VL53L1X Arduino library, I found that it supports two modes, which are short and long. I was able to lookup the 
                             datasheet for the ToF, and it gave an overview for both long and short modes. For long mode, it can reach up to 4m, but the maximum distance it can measure under strong ambient light is .73m. 
                             However, for the short mode the maximum distance is 1.36m in the dark, and the maximum distance under strong ambient light is 1.35m. I have included the 
                             chart below as a reference! <br><br>
                             <img src="assets/img_lab3/IMG_datasheet.png" alt="scanning" width="90%" /><br><br>
                             Considering that the car may be under different environments where it may affect the sensors ability to perform, I would rather choose the short mode. 
                             Given that with the short mode the effect of light is very minimal, it is more of the logical choice. <br><br>
-                            <h4 class="mb-0">Testing choosen mode </h4>
-                            
-
-
+                            <h4 class="mb-0">Testing chosen mode </h4>
                             
 
                         </p>
