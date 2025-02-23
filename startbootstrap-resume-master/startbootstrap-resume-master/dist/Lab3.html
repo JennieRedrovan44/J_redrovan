@@ -116,6 +116,42 @@
                         </p>
                     </div>
                 </div>
+                <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
+                    <div class="flex-grow-1">
+                        <h3 class="mb-0">Task 3: Scan the I2C channel to find the sensor</h3>
+    
+                        <p>
+                        I installed SparkFun VL53L1X 4m laser distance sensor library, and from there I opened <br><br>
+                        file->Examples->Apollo3->Example05_Wire_I2C.ino<br><br>
+                        I then connected one of my ToFs, and the Example05_Wire_I2C.ino sketch detected the sensor on the I2C bus. The output of the scan is shown below:
+                        <img src="assets/img_lab3/IMG_scanning.png" alt="scanning" width="90%" /><br><br>
+                        As seen above, the sensor had a I2C address of 0x29. According to the datasheet for the ToF, the default address is 0x52. 
+                        For 0x52 in binary is 0b01010010 and for 0x29 is 0b00101001. However, notice that for 0x52 in binary it has been shifted to the right 
+                        which results in 0b00101001 (or 0x29). This operation is essentially is removes the the least significant bit which is used read/write. <br><br>
+                        </p>
+                    </div>
+                </div>
+                <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
+                    <div class="flex-grow-1">
+                        <h3 class="mb-0">Task 4: ToF Sensor</h3>
+                        <h4 class="mb-0">Sensor Mode Discussion </h4>
+                        <p>
+                            Using Sparkfun VL53L1X Arudino family, I saw that it can only support two modes, which are short and long. I was able to lookup the 
+                            datasheet for the ToF, and it gave an overview for both long and short modes. For long mode, it can reach up to 4m, but the maximum distance it can measure under strong ambient light is .73m. 
+                            However, for the short mode the maximum distance is 1.36m in the dark, and the maximum distance under strong ambient light is 1.35m. I have included the 
+                            chart below as a reference! <br><br>
+                            <img src="assets/img_lab3/IMG_datasheet.png" alt="scanning" width="90%" /><br><br>
+                            Considering that the car may be under different environments where it may affect the sensors ability to perform, I would rather choose the short mode. 
+                            Given that with the short mode the effect of light is very minimal, it is more of the logical choice. <br><br>
+                            <h4 class="mb-0">Testing choosen mode </h4>
+                            
+
+
+                            
+
+                        </p>
+                    </div>
+                </div>
 
 
 
