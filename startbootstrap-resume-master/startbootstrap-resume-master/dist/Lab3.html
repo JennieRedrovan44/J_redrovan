@@ -170,8 +170,9 @@
                             Based on the plots above, the sensor appears to be neither highly accurate nor particularly reliable at very short distances. <br><br>
                             
                             <h5 class="mb-0">Ranging Time</h5>
-                            In the plots below, it depicts the duration that it took for each measurment (distances). I noticed that it before the 1.30m, the time averged from 50sec to 55sec for 5 data points. 
-                            I would say I can improve the speed by commenting out the print statements. 
+                            In the plots below, it depicts the duration that it took for each measurment (distances). I noticed that it before the 130cm, the time averged from 50sec to 55sec for 5 data points. 
+                            I would say I can improve the speed by commenting out the print statements. After 130cm, the duration to collect measurements was shorter, but since we are using the short range that means the 
+                            data accuracy may not be as reliable. 
                             <img src="assets/img_lab3/IMG_duration.png" alt="scanning" width="90%" /><br><br>
                             <img src="assets/img_lab3/IMG_duration_mean_stdev.png" alt="scanning" width="90%" /><br><br>
                         </p>
@@ -181,7 +182,20 @@
                     <div class="flex-grow-1">
                         <h3 class="mb-0">Task 5:Parallel ToFs</h3>  
                         <p>
-                            urmom
+                            Code in Arduino: 
+                            <img src="assets/img_lab3/IMG_parallelToF.png" alt="scanning" width="90%" /><br><br>
+
+                            <iframe
+                            width="560"
+                            height="315"
+                            src="https://www.youtube.com/embed/a_EBZmLpH9s"
+                            title="YouTube video player"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowfullscreen>
+                        </iframe><br><br>
+                        As shown in the video, I was able to change the address of one of the ToFs to 0x30 while the other address of the ToF is 0x52. I followed the same process that I described in the prelab. 
+                            
                         </p>
                     </div>
                 </div>
