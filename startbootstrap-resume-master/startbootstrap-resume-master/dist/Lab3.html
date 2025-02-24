@@ -143,6 +143,25 @@
                             Considering that the car may be under different environments where it may affect the sensors ability to perform, I would rather choose the short mode. 
                             Given that with the short mode the effect of light is very minimal, it is more of the logical choice. <br><br>
                             <h4 class="mb-0">Testing chosen mode </h4>
+                            I integrated a portion of Example1_ReadDistance.ino into ble_arduino.ino and added a case to focus exclusively on short distances.<br><br>
+                            Arduino Code:<br>
+                            <img src="assets/img_lab3/IMG_ToFcode.png" alt="scanning" width="90%" /><br><br>
+                            Python code: <br>
+                            <img src="assets/img_lab3/IMG_ToFdata.png" alt="scanning" width="90%" /><br><br>
+                            
+                            Setup for collecting data: <br><br>
+                            <img src="assets/img_lab3/IMG_5946.jpg" alt="scanning" width="90%" /><br><br>
+
+                            <h5 class="mb-0">Sensor range</h5>
+                            I collected data by measuring distances ranging from 15 cm to 190 cm. 
+                            For each distance, I recorded five measurements using the ToF sensor, calculated the mean, and plotted it against the actual measured distance.
+                            The graph below illustrates the relationship between the actual distance and the ToF-measured distance.
+                            <img src="assets/img_lab3/IMG_mean_plot.png" alt="scanning" width="90%" /><br><br>
+                            
+
+
+
+
                             
 
                         </p>
