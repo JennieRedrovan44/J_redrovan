@@ -57,7 +57,7 @@
                         <p>
                         Before going into the lab, I planned out how to connect the ToF sensor to the Artemis board. I used the following connections: <br><br>
                         add image of setup 
-                        <img src="assets/img_lab2/set_up_connection.png" alt = "set_up_connection" width=90% /><br><br>
+                        <img src="assets/img_lab3/IMG80000.png" alt = "set_up_connection" width=90% /><br><br>
                         Since we have two ToF sensors, both will have the same I2C address by default. Since we cannot have two 
                         devices with the same address on the same bus, we need to change the address of one of the sensors. <br><br>
                         The I2C bus (Inter-Integrated Circuit) is a form of communication between multiple devices by using serial (bit by bit)
@@ -219,7 +219,9 @@
                         From the plots above, you can see that for sensor 1 it was able to collect data for nine points. However, for sensor two it was able to collect only 7 points. 
                         What I noticed was that quicket that sensor one was able to collect data was when sensor two cannot. Which means that my code was able to collect the time durtion for sensor one 
                         even though sensor two was not collecting. This is a good thing because it means that the sensors are not interfering with each other. 
-                        Also, before I was able to collect data for both sensors, I saw that my sensor was able to output data when ready by one second. Also, this is shown by sensor two which is able to output in one second. 
+                        However, that does mean that one the sensors is not collecting data when the other sensor is collecting data, which can cause issues if I want to collect data for both sensors.
+                        Also, before I was able to collect data for both sensors, I saw that my sensor was able to output data when ready by one second. Also, this is shown by sensor two which is able to output in one second.
+
 
                         Arudino Code:<br>
                         <img src="assets/img_lab3/IMG_ToFRATE.png" alt="scanning" width="90%" /><br><br>
