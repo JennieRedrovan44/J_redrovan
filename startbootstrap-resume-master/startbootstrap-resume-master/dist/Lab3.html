@@ -206,16 +206,36 @@
                         Below, I have plotted the the time it makes to collect data for each distance. 
                         The way I was able to do this was I set the start time and then subtracted the current time with start time when 
                         the data was collected. I then plotted the time duration for a data point in jupyter notebook. <br><br>
+                        This is plots the time it takes for one sensor to collect data.<br><br>
                         <img src="assets/img_lab3/IMG_sensor1.png" alt="scanning" width="90%" /><br><br>
-                        Here, this is plots the time it takes for one sensor to collect data.<br><br>
-                        <img src="assets/img_lab3/IMG_sensor2.png" alt="scanning" width="90%" /><br><br>
                         Here, this is plots the time it takes for the 2nd sensor to collect data.<br><br>
-                        <img src="assets/img_lab3/IMG_bothsensor.png" alt="scanning" width="90%" /><br><br>
+                        <img src="assets/img_lab3/IMG_sensor2.png" alt="scanning" width="90%" /><br><br>
                         Here, this is plots the time it takes for both sensors to collect data.<br><br>
-                        From the plots above, you can see that for sensor 1 it was able to 
+                        <img src="assets/img_lab3/IMG_bothsensor.png" alt="scanning" width="90%" /><br><br>
+                        
+                        Time collected shown below: 
+                        <img src="assets/img_lab3/IMG_timearray.png" alt="scanning" width="90%" /><br><br>
 
-                        H
+                        From the plots above, you can see that for sensor 1 it was able to collect data for nine points. However, for sensor two it was able to collect only 7 points. 
+                        What I noticed was that quicket that sensor one was able to collect data was when sensor two cannot. Which means that my code was able to collect the time durtion for sensor one 
+                        even though sensor two was not collecting. This is a good thing because it means that the sensors are not interfering with each other. 
+                        Also, before I was able to collect data for both sensors, I saw that my sensor was able to output data when ready by one second. Also, this is shown by sensor two which is able to output in one second. 
+
+                        Arudino Code:<br>
+                        <img src="assets/img_lab3/IMG_ToFRATE.png" alt="scanning" width="90%" /><br><br>
                         </p>
+                    </div>
+                </div>
+                <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
+                    <div class="flex-grow-1">
+                        <h3 class="mb-0">Task 7: ToF data and IMU data</h3>  
+                        <p>
+                            In order to record time-stamped ToF data and IMU data for a set period of time and then send it over Bluetooth to my computer, 
+                            I added the TOF sensor case code that I created into my my case for gyro. From there, I created plot as shown below.
+                            <img src="assets/img_lab3/IMG_gyro.png" alt="scanning" width="90%" /><br><br>
+                            <img src="assets/img_lab3/IMG_GYRO_TOF.png" alt="scanning" width="90%" /><br><br>
+                            <img src="assets/img_lab3/IMG_TOF100.png" alt="scanning" width="90%" /><br><br>
+                        </p><img src="assets/img_lab3/IMG_TOF1002.png" alt="scanning" width="90%" /><br><br>
                     </div>
                 </div>
 
