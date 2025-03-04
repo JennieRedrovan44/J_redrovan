@@ -206,6 +206,17 @@
                             <img src="assets/img_lab4/IMG_1262.jpg" alt="scanning" width="50%" /><br><br>
                             <img src="assets/img_lab4/IMG_5963.jpg" alt="scanning" width="50%" /><br><br>
                             <img src="assets/img_lab4/IMG_5964.jpg" alt="scanning" width="50%" /><br><br>
+
+                            Video of the car driving around: <br><br>
+                            <iframe
+                            width="560"
+                            height="315"
+                            src="https://www.youtube.com/embed/09TOr0Z7URk"
+                            title="YouTube video player"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowfullscreen>
+                            </iframe>
                         </p>
                     </div>
                 </div>
@@ -221,10 +232,60 @@
                 </div>
                 <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
                     <div class="flex-grow-1">
-                        <h3 class="mb-0">Task 8: Level 5000 Questions</h3>  
+                        <h3 class="mb-0">Task 7: Calibration</h3>  
                         <p>
-                           write stuff here
+                            As mentioned above in the previous task, the car was not able to move in a straight line at the minimum PWM values given that the motors are running at different PWM. 
+                            The calibration factors for forward motion were determined through iterative testing by observing the car's movement. If the robot veered left or right, adjustments 
+                            were made to the scaling factors to balance the wheel speeds. The left wheel's PWM is multiplied by 0.87 to slightly reduce its speed, while the right wheel's PWM remains at 0.815.
+                            These factors, when multiplied by 255, help the car move more consistently in a straight line. As shown below: <br><br>
 
+                            <iframe
+                            width="560"
+                            height="315"
+                            src="https://www.youtube.com/embed/IVRQ8Nr2GfY"
+                            title="YouTube video player"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowfullscreen>
+                            </iframe>
+                            <br><br>
+                            Code used shown below: <br><br>
+                            <img src="assets/img_lab4/IMG_calibration.png" alt="scanning" width="50%" /><br><br>
+                        </p>
+
+                    </div>
+                </div>
+
+                <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
+                    <div class="flex-grow-1">
+                        <h3 class="mb-0">Task 8: Open-loop/h3>  
+                        <p>
+                            I had a tough time getting the car to go backwards straight, so I calibrated that as well through many iterative testing by observing the car's movement.
+                            Also, I made the car go forward and backwards in a straight line. I also made the car turn left and right. However, the video got cut in two parts becuase my videographer (my friend) accidentally stopped recording.
+                            <br><br>
+                            <iframe
+                            width="560"
+                            height="315"
+                            src="https://www.youtube.com/embed/0SSGVWNRWVc"
+                            title="YouTube video player"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowfullscreen>
+                            </iframe>
+                            <br><br>
+                            <iframe
+                            width="560"
+                            height="315"
+                            src="https://www.youtube.com/embed/IccnNHB7aa4"
+                            title="YouTube video player"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowfullscreen>
+                            </iframe>
+                            <br><br>
+                            Code used shown below: <br><br>
+                            <img src="assets/img_lab4/IMG_openloop1.png" alt="scanning" width="50%" /><br><br>
+                            <img src="assets/img_lab4/IMG_openloop2.png" alt="scanning" width="50%" /><br><br>
                         </p>
 
                     </div>
@@ -234,7 +295,8 @@
                         <h3 class="mb-0">Conclusion/Reference</h3>  
                         <p>
                             Overall, I really felt that I learned a lot more. I was able to debug my code more easily than before, and I can send my data over bluetooth and create 
-                            plots in jupyter notebook. I also learned how to solder which I never knew how to do before. Finally, it has also shown me that robots have limited perception, and that
+                            plots in jupyter notebook. I also learned how to solder which I never knew how to do before. Finally, it has also shown me that robot
+                            s have limited perception, and that
                             their sensors are not always accurate and reliable and can vary through factors not forseen. 
 
                             References: <br><br>
