@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Jennie Redrovan</title>
+        <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico" />
+        <!-- Font Awesome icons (free version)-->
+        <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+        <!-- Google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:500,700" rel="stylesheet" type="text/css" />
+        <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i" rel="stylesheet" type="text/css" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="css/styles.css" rel="stylesheet" />
+    </head>
+    <body id="page-top">
+        <!-- Navigation-->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav">
+            <a class="navbar-brand js-scroll-trigger" href="#about">
+                <span class="d-block d-lg-none">Jennie Redrovan</span>
+                <span class="d-none d-lg-block">
+                    <img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="assets/img/Picofme.png" alt="Profile Picture" />
+                </span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="index.html">About</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="Lab1a.html">Lab 1A: Artemis</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="Lab1B.html">Lab 1B: Bluetooth</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="Lab2.html">Lab 2: IMU</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="Lab3.html">Lab 3: TOF</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="Lab4.html"style="color: rgb(255, 255, 255);">Lab 4: Motor Drivers, Open Loop Control</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="Lab5.html">Lab 5: Speed Control</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="Lab6.html">Lab 6: Orientation Control</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="Lab7.html">Lab 7: Kalman Filter</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="Lab8.html">Lab 8: Stunts!</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="Lab9.html">Lab 9: Mapping</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="Lab10.html">Lab 10: Bayes Filter (Sim)</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="Lab11.html">Lab 11: Localization (Real)</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="Lab12.html">Lab 12: Path Planning</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <section class="resume-section" id="about">
+            <div class="resume-section-content">
+                <h2 class="mb-2">Lab 5 : <span class="text-primary">Linear PID control and Linear interpolation</span></h2>
+                <!--Prelab-->
+                <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
+                    <div class="flex-grow-1">
+                        <h3 class="mb-0">Prelab</h3>
+                        <p>
+                            Before starting the prelab, I had to separate my code into different C++ header files. Like Stephan, I was getting tired of constantly 
+                            scrolling and keeping track of all my initializations at the beginning of my code. 
+                            Mangaing everything in one place was becoming overwhelming. So, I decided to separate my code into different files to keep everything organized. 
+                            This allowed me to keep everything structured and made it easier for me to navigate<br><br>
+                            I created header files for ble.hpp, imu.hpp, tof.hpp, motors.hpp, cmd_types.h. For this lab, I created another header called PID.hpp. <br><br>
+                            Finally, I modified ble.arduino.ino to move the initalizations of BLE and TOF into the setup function for better organzation. <br><br>
+                            
+                            <h4>Prelab</h4>
+                            Now that I had a better structure of my code, I was ready to start the prelab. <br<br>
+                            Fristly, I created new commands specfically, I created start_PID, stop_PID, SEND_PID_DATA. <br><br>
+                            For start_PID: <br><br>
+                            Sending the command from Jupyter notebook:<br><br>
+                            <img src="assets/img_lab5/IMG_command_start_PID.png" alt="scanning" width="90%" /><br><br>
+                            The case corresponding to the command: <br><br>
+                            <img src="assets/img_lab5/IMG_command_start_PID_case.png" alt="scanning" width="90%" /><br><br>
+                            When the command from Jupyter is sent to the robot, the robot will start the PID controller given that run_PID_CASE will now be 1 <br><br>
+                            When run_PID_CASE is 1 it will start the PID which is called in the void loop. Code snippet below:<br><br>
+                            <img src="assets/img_lab5/IMG_start_PID_PRELAB" alt="scanning" width="90%" /><br><br>
+                            The forward and backward functions is called in the PID_start function, the corresponding code snippet is shown below:<br><br>
+                            <img src="assets/img_lab5/IMG_start_PID_PRELAB_forward.png" alt="scanning" width="90%" /><br><br>
+                            <img src="assets/img_lab5/IMG_start_PID_PRELAB_backward.png" alt="scanning" width="90%" /><br><br>
+                            For stop_PID: <br><br>
+                            Sending the command from Jupyter notebook:<br><br>
+                            <img src="assets/img_lab5/IMG_command_stop_PID.png" alt="scanning" width="90%" /><br><br>
+                            The case corresponding to the command: <br><br>
+                            <img src="assets/img_lab5/IMG_command_stop_PID_case.png" alt="scanning" width="90%" /><br><br>
+                            When the command from Jupyter is sent to the robot, the robot will stop the PID controller given that run_PID_CASE will now be 0 (no longer true so loop will not run)<br><br>
+                            For SEND_PID_DATA: <br><br>
+                            Sending the command from Jupyter notebook:<br><br>
+                            <img src="assets/img_lab5/IMG_command_SEND_PID_DATA.png" alt="scanning" width="90%" /><br><br>
+                            The case corresponding to the command: <br><br>
+                            <img src="assets/img_lab5/IMG_SEND_PID_DATA_PRELAB.png" alt="scanning" width="90%" /><br><br>
+                            When the command from Jupyter is sent to the robot, the robot will send the PID data back to Jupyter notebook. I included the snippet on how the data is being processe as shown above<br><br>
+
+
+                            
+                            
+                            
+
+
+                            
+                        </p>
+                    </div>
+                </div>
