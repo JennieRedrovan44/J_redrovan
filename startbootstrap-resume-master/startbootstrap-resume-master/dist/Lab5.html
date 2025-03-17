@@ -92,6 +92,8 @@
                         <h3 class="mb-0">LAB: PID control</h3>  
                         <p>
                             Since I am a level 5000 student, I could choose between PI or PID. I choose to go with PID as I wanted to be able to control the car more accurately. <br><br>
+                            The PID equation is shown below:<br><br>
+                            <img src="assets/img_lab5/PID_equation.png" alt="scanning" width="50%" /><br><br>
                             The final code that I used throughout the lab is shown below:<br><br>
                             When the command from Jupyter is sent to the robot, the robot will start the PID controller given that run_PID_CASE will now be 1 <br><br>
                             When run_PID_CASE is 1 it will start the PID which is called in the void loop. Code snippet below:<br><br>
@@ -101,12 +103,64 @@
                             <img src="assets/img_lab5/IMG_start_PID_PRELAB_backward.png" alt="scanning" width="90%" /><br><br>
                             
                             
-                            <strong>Implementing Kp </strong> <br><br>
+                            <h2>Implementing Kp </h2> <br><br>
                             The proportional gain (Kp) is the difference between the setpoint and the TOF reading.The setpoint that was used was 304mm (which is about 1ft away from the wall). <br><br>
-
+                            I set the ki and kd to 0 in the start_PID command for now as I wanted to see how the robot would behave with just the proportional gain. <br><br>
+                            I tested kp at kp = .03, .04, and .05 <br><br>
+                            I have included the plots and videos for each of the kp values below. <br><br>
+                            <strong>Plots for kp=.03</strong>
+                            <img src="assets/img_lab5/P_control_.03_calibration.png" alt="scanning" width="90%" />
+                            <strong>Video for kp=.03</strong>
+                            <iframe
+                            width="560"
+                            height="315"
+                            src="https://www.youtube.com/embed/W2ma6aJm4YM"
+                            title="YouTube video player"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowfullscreen>
+                            </iframe><br><br>
+                            <strong>Plots for kp=.04</strong>
+                            <img src="assets/img_lab5/P_control_.04_calibration.png" alt="scanning" width="90%" />
+                            <strong>Video for kp=.04</strong>
+                            <iframe
+                            width="560"
+                            height="315"
+                            src="https://www.youtube.com/embed/GK1A-jyfTDQ"
+                            title="YouTube video player"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowfullscreen>
+                            </iframe><br><br>
+                            <strong>Plots for kp=.05</strong>
+                            <img src="assets/img_lab5/P_control_.05_calibration.png" alt="scanning" width="90%" />
+                            <strong>Video for kp=.05</strong>
+                            <iframe
+                            width="560"
+                            height="315"
+                            src="https://www.youtube.com/embed/OY-cvsCoWHM"
+                            title="YouTube video player"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowfullscreen>
+                            </iframe><br><br>
+                            For the plots and videos above, I calibrated wheels in order for the robot to move straight. <br><br>
+                            I included a video of the robot with PID linear control with just the proportional gain without any calibration as shown below: <br><br>
+                            <iframe
+                            width="560"
+                            height="315"
+                            src="https://www.youtube.com/embed/1oEHYSnLzgk"
+                            title="YouTube video player"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowfullscreen>
+                            </iframe><br><br>
+                            As you can see, the robot is not able to move straight. This is because the wheels are not calibrated. <br><br>
+                            Also, I tried implementing a higher value for kp = .06 but the robot would hit the wall and flip over.
                             
-                          
-
+                            <h2>Implementing Ki</h2> <br><br>
+                            The integral gain (Ki) is the sum of the error over time. This is used to eliminate the steady-state error. <br><br>
+                            In the plots 
                         </p>
                     </div>
                 </div>
