@@ -102,15 +102,14 @@
                             <img src="assets/img_lab5/IMG_start_PID_PRELAB_forward.png" alt="scanning" width="90%" /><br><br>
                             <img src="assets/img_lab5/IMG_start_PID_PRELAB_backward.png" alt="scanning" width="90%" /><br><br>
                             
-                            
-                            <h2>Implementing Kp </h2> <br><br>
+                            <h2 class="mb-0">Implementing Kp </h2>  
                             The proportional gain (Kp) is the difference between the setpoint and the TOF reading.The setpoint that was used was 304mm (which is about 1ft away from the wall). <br><br>
                             I set the ki and kd to 0 in the start_PID command for now as I wanted to see how the robot would behave with just the proportional gain. <br><br>
                             I tested kp at kp = .03, .04, and .05 <br><br>
                             I have included the plots and videos for each of the kp values below. <br><br>
-                            <strong>Plots for kp=.03</strong>
-                            <img src="assets/img_lab5/P_control_.03_calibration.png" alt="scanning" width="90%" />
-                            <strong>Video for kp=.03</strong>
+                            <strong>Plots for kp=.03</strong><br><br>
+                            <img src="assets/img_lab5/P_control_.03_calibration.png" alt="scanning" width="90%" /><br><br>
+                            <strong>Video for kp=.03</strong><br><br>
                             <iframe
                             width="560"
                             height="315"
@@ -120,9 +119,9 @@
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                             allowfullscreen>
                             </iframe><br><br>
-                            <strong>Plots for kp=.04</strong>
-                            <img src="assets/img_lab5/P_control_.04_calibration.png" alt="scanning" width="90%" />
-                            <strong>Video for kp=.04</strong>
+                            <strong>Plots for kp=.04</strong><br><br>
+                            <img src="assets/img_lab5/P_control_.04_calibration.png" alt="scanning" width="90%" /><br><br>
+                            <strong>Video for kp=.04</strong><br><br>
                             <iframe
                             width="560"
                             height="315"
@@ -132,9 +131,9 @@
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                             allowfullscreen>
                             </iframe><br><br>
-                            <strong>Plots for kp=.05</strong>
-                            <img src="assets/img_lab5/P_control_.05_calibration.png" alt="scanning" width="90%" />
-                            <strong>Video for kp=.05</strong>
+                            <strong>Plots for kp=.05</strong><br><br>
+                            <img src="assets/img_lab5/P_control_.05_calibration.png" alt="scanning" width="90%" /><br><br>
+                            <strong>Video for kp=.05</strong><br><br>
                             <iframe
                             width="560"
                             height="315"
@@ -156,8 +155,9 @@
                             allowfullscreen>
                             </iframe><br><br>
                             As you can see, the robot is not able to move straight. This is because the wheels are not calibrated. <br><br>
-                            Also, I tried implementing a higher value for kp = .06 but the robot would hit the wall and flip over.
+                            Also, I tried implementing a higher value for kp = .06 but the robot would hit the wall and flip over.<br><br>
                             
+                            After analyzing the plots and videos, I decided to go with kp = .05 as it was the most stable and there was much less oscillations and was faster compared to kp=.03 and .03<br><br> 
                             <h2>Implementing Ki</h2> <br><br>
                             The integral gain (Ki) is the sum of the error over time. This is used to eliminate the steady-state error. <br><br>
                             In the plots 
