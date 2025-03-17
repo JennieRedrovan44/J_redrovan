@@ -157,10 +157,74 @@
                             As you can see, the robot is not able to move straight. This is because the wheels are not calibrated. <br><br>
                             Also, I tried implementing a higher value for kp = .06 but the robot would hit the wall and flip over.<br><br>
                             
-                            After analyzing the plots and videos, I decided to go with kp = .05 as it was the most stable and there was much less oscillations and was faster compared to kp=.03 and .03<br><br> 
-                            <h2>Implementing Ki</h2> <br><br>
+                            After analyzing the plots and videos, I decided to go with kp = .05 as it was the most stable and there was much less oscillations and was faster compared to kp=.03 and .04<br><br> 
+                            <h2 class="mb-0">Implementing Kd </h2> 
+                            The derivative gain (Kd) is the rate of change of the error. This is used to reduce the overshoot and oscillations. <br><br>
+                            I set the ki to 0 in the start_PID command for now as I wanted to see how the robot would behave with just the proportional and derivative gain. <br><br>
+                            I kept kp = .05 and tested kd at kd = .03, .3, .5, 1, 5, 2, <br><br>
+                            I have included the plots and videos for each of the kd values below. <br><br>
+                            <strong>Plots for kd=.03</strong><br><br>
+                            <img src="assets/img_lab5/PD_control_.05p_.03d_calibration.png" alt="scanning" width="90%" /><br><br>
+                            <strong>Video for kd=.03</strong><br><br>
+                            <iframe
+                            width="560"
+                            height="315"
+                            src="https://www.youtube.com/embed/IWkntqjlTa8"
+                            title="YouTube video player"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowfullscreen>
+                            </iframe><br><br>
+                            <strong>Plots for kd=.03</strong><br><br>
+                            <img src="assets/img_lab5/PD_control_.05p_.3d_calibration.png" alt="scanning" width="90%" /><br><br>
+                            <strong>Video for kd=.3</strong><br><br>
+                            <iframe
+                            width="560"
+                            height="315"
+                            src="https://www.youtube.com/embed/M_1-RB4Uh8Y"
+                            title="YouTube video player"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowfullscreen>
+                            </iframe><br><br>
+                            <strong>Plots for kd=.03</strong><br><br>
+                            <img src="assets/img_lab5/PD_control_.05p_1d_calibration.png" alt="scanning" width="90%" /><br><br>
+                            <strong>Video for kd=1</strong><br><br>
+                            <iframe
+                            width="560"
+                            height="315"
+                            src="https://www.youtube.com/embed/xEe3u77blvw"
+                            title="YouTube video player"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowfullscreen>
+                            </iframe><br><br>
+                            <strong>Plots for kd=.03</strong><br><br>
+                            <img src="assets/img_lab5/PD_control_.05p_5d_calibration.png" alt="scanning" width="90%" /><br><br>
+                            <strong>Video for kd=5</strong><br><br>
+                            <iframe
+                            width="560"
+                            height="315"
+                            src="https://www.youtube.com/embed/tWSaztsLPs0"
+                            title="YouTube video player"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowfullscreen>
+                            </iframe><br><br>
+
+                            As you can see, at kd =.3 is where the robot 
+
+
+
+
+
+
+
+
+
+
                             The integral gain (Ki) is the sum of the error over time. This is used to eliminate the steady-state error. <br><br>
-                            In the plots 
+                            
                         </p>
                     </div>
                 </div>
