@@ -228,8 +228,10 @@
                             allowfullscreen>
                             </iframe><br><br>
 
-                            The reason why this was occuring was becuase the integral gain (Ki) is the sum of the error over time. Hence, since it is adding and adding the error over time it will be incresing which will impact the speed that the robot goes and how fast the TOF is responding. Even so, 
-                            when ki is contrained as I did in my code, it can be used to eliminate the steady-state error. <br><br>
+                            The reason why this was occuring was becuase the integral gain (Ki) is the sum of the error over time. Hence, since it is adding and adding the error over time it will be incresing which will impact the speed that the robot goes and how fast the TOF is responding. 
+                            As seen in the video, my car was speeding even though it is close to the wall. From there, I implemented the integrator windup, which protects the integrator from increasing excessively. The way I was able to protect against wind up was through contraining 
+                            ki as shown below: <br><br>
+                            <img src="assets/img_lab5/integrator.png" alt="scanning" width="90%" /><br><br>
 
                             I kept kp the same, but I tested different kd and ki. I will show plots for each experimentation, I did not take videos each time sadly: <br><br>
 
@@ -265,27 +267,64 @@
                             The frequency for the PID control was found to be around 8ms which is around 125hz. Since the frequency for the PID control is higher compared to that of what the TOF sensor is outputting. 
                             This implies that our PID control is faster than what our TOF sensor is outputting, and that would mean that the solution to this problem would be to use 
                             extrapolation in order to estimate the distance if the new data is not available. <br><br>
+                            Code snippet: 
+                            <img src="assets/img_lab5/extrapolated.png" alt="scanning" width="90%" /><br><br>
+                            Plot of extraplotation: 
+                            <img src="assets/img_lab5/PID_control_extraplotation.png" alt="scanning" width="90%" /><br><br>
+                            Video of robot with extraplotation code: 
+                            <iframe
+                            width="560"
+                            height="315"
+                            src="https://www.youtube.com/embed/ox--PS_eXok"
+                            title="YouTube video player"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowfullscreen>
+                            </iframe><br><br>
+
+                            <strong> Testing Final System</strong>   
+                            Using kp=.05, kd=1.5, and ki=.000003 I tested this system at different distance and surfaces as shown below: <br><br>
                             
-                            
+                            At distance 3ft: <br><br>
+                            <iframe
+                            width="560"
+                            height="315"
+                            src="https://www.youtube.com/embed/ox--PS_eXok"
+                            title="YouTube video player"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowfullscreen>
+                            </iframe><br><br>
+
+                            Plot at distance 3ft: <br><br>
+                            <img src="assets/img_lab5/PID_control_final_3ft.png" alt="scanning" width="90%" /><br><br>
+
+                            Video of distance about 5ft + carpet: <br><br>
+                            <iframe
+                            width="560"
+                            height="315"
+                            src="https://www.youtube.com/embed/Vyu9SLyy8mA"
+
+                            title="YouTube video player"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowfullscreen>
+                            </iframe><br><br>
+
+                            Plot at distance about 5ft + carpet: <br><br>
+                            <img src="assets/img_lab5/PID_control_final_carpet.png" alt="scanning" width="90%" /><br><br>
+
+                            <strong>5000 Level Task: Wind-Up Protection </strong>   
+                            Discussed above!
 
 
-                            
+                            <h3 class="mb-0">Conclusion</h3>
+                            I would say this lab was challenging in the fact that it was hard to predict what would be the best values for our system. 
+                            I mean our robots can change, the batteries tend to die quick, so what I thought was good for a day I was working may have not been the best 
+                            values as seen above. I mean when I saw the plots how my robot was able to have no overshoot and be able to stop at 1ft and have little to no oscillations was impressive. 
+                            However, the next day, these values no longer worked. I guess it was a fluke. However, it showed me how our batteries just die so quick and can impact the performace of that of the wheels. 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-                            The integral gain (Ki) is the sum of the error over time. This is used to eliminate the steady-state error. <br><br>
-                            
+                            References: I used Mikayla and Stephans as a reference to understand what we are looking for. I also used the help of chatGPT to help me figure out the best course of action to debug my system. 
                         </p>
                     </div>
                 </div>
