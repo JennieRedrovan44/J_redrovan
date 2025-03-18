@@ -63,10 +63,10 @@
                           As of right now, I did not implement speed in this code; however, it would be cool to incorporate in the future. The next value sets the angle that you would like, for example 90 degrees or 0 degrees. 
                           The next three values are the kp, ki, kd that we get to change and send to the robot. <br><br>
                           <strong>send_orientation</strong><br><br>
-                          <img src="assets/img_lab6/send_orientation_case.png" alt="scanning" width="90%" /><br><br>
+                          <img src="assets/img_lab6/send_orientation_case.png" alt="scanning" width="50%" /><br><br>
                           In this image, it calls the function that sends the data collected in the orientation_case and then sent to jupyter notebook.<br><br>
                           <strong>stop_orientation</strong><br><br>
-                          <img src="assets/img_lab6/stop_orientation_case.png" alt="scanning" width="90%" /><br><br>
+                          <img src="assets/img_lab6/stop_orientation_case.png" alt="scanning" width="50%" /><br><br>
                           A very simple case where it sets the run_orientation_case to zero, which turns of the orientation control. <br><br>
 
                           How the data was processed is shown below from the jupyter notebook code: 
@@ -88,14 +88,14 @@
                         Despite these improvements, the sensor still has limitations. Factors such as sensor bias, and high-frequency vibrations can introduce noise into the data. <br><br>
 
                         To implement the DMP, I followed the lab instructions provided and modified the necessary code and configuration settings into my code.
-                        I implemented this code below to my loop in my PID.cpp
-                        <img src="assets/img_lab6/DMP1.png" alt="scanning" width="50%" /><br><br>
+                        I implemented this code below to my loop in my PID.cpp<br><br>
+                        <img src="assets/img_lab6/DMP1.png" alt="scanning" width="90%" /><br><br>
 
                         Then with other classmates and the use of ChatGPT and google, I was able to implement with teh conversion from quaternion to angular yaw. Code snippet below: 
-                        <img src="assets/img_lab6/quanternion_to_yaw.png" alt="scanning" width="50%" /><br><br>
+                        <img src="assets/img_lab6/quanternion_to_yaw.png" alt="scanning" width="70%" /><br><br>
 
                         In my void setup, I added this code below as per intructions: 
-                        <img src="assets/img_lab6/void_setup.png" alt="scanning" width="50%" /><br><br>
+                        <img src="assets/img_lab6/void_setup.png" alt="scanning" width="90%" /><br><br>
 
                         Also, I forgot to mention that I uncommented "ICM_20948_USE_DMP" in the ICM_20948_C.h header, and I also included #define ICM_20948_USE_DMP in my ble.arduino. 
                     </p>
@@ -107,7 +107,7 @@
                     <p>
                         In the future I would like to fully implment PID into my controller, but I was running out of time so I decided that PI would suffice for now. <br><br>
                         Below snippet of my code used for PI:
-                        <img src="assets/img_lab6/run_pid_orientation1.png" alt="scanning" width="50%" /><br><br>
+                        <img src="assets/img_lab6/run_pid_orientation1.png" alt="scanning" width="90%" /><br><br>
                         
                         So, once I had the code as shown above, I frist started focusing on the value for kp that works for my system all while I kept ki and kp 0. 
                         At frist I started using the kp that I found in the previous lab which was kp=.05 but quickly I found that that it did not work for my system given that it gave me small PWM values. 
@@ -118,7 +118,7 @@
                         <img src="assets/img_lab6/IMG_kp4_error.png" alt="scanning" width="50%" /><br><br>
                         <img src="assets/img_lab6/IMG_kp4_PWM.png" alt="scanning" width="50%" /><br><br>
                         
-                        I then added ki, which I started really small given what occured last lab. After testing for quite some time, I saw good performace from ki value of .15 as shown below: 
+                        I then added ki, which I started really small given what occured last lab. After testing for quite some time, I saw good performace from ki value of .15 as shown below: <br><br>
                         Graphs: <br><br>
                         <img src="assets/img_lab6/IMG_kp4_ki_.15_angle.png" alt="scanning" width="50%" /><br><br>
                         <img src="assets/img_lab6/IMG_kp4_ki_.15_errror.png" alt="scanning" width="50%" /><br><br>
