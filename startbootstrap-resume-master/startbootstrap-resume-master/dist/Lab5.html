@@ -161,7 +161,7 @@
                             Also, I tried implementing a higher value for kp = .06 but the robot would hit the wall and flip over.<br><br>
                             
                             After analyzing the plots and videos, I decided to go with kp = .05 as it was the most stable since there was much less oscillations at the set distance, less overshoot, and was faster compared to kp=.03 and .04<br><br> 
-                            Essentially, 
+
                             <h2 class="mb-0">Implementing Kd </h2> 
                             The derivative gain (Kd) is the rate of change of the error. This is used to reduce the overshoot and oscillations. <br><br>
                             I set the ki to 0 in the start_PID command for now as I wanted to see how the robot would behave with just the proportional and derivative gain. <br><br>
@@ -251,7 +251,7 @@
                             
 
                             So, for the plots shown above, specifically at kd=.5 and ki=00000005, my robot was able to reach the setpoint and did not overshoot. However, when I tried it the next day, that no longer worked. 
-                            So, I went with the second best which was kd=1.5 and ki=.000003. With this controller it was more consistant and I was able repeat it multiple times as shown below. 
+                            So, I went with the second best which was kd=1.5 and ki=.000003. With this controller it was more consistant and I was able repeat it multiple times as shown below. <br><br>
                             <iframe
                             width="560"
                             height="315"
