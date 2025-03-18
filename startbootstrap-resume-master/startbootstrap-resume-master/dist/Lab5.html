@@ -85,6 +85,8 @@
                             The case corresponding to the command: <br><br>
                             <img src="assets/img_lab5/IMG_SEND_PID_DATA_PRELAB.png" alt="scanning" width="90%" /><br><br>
                             When the command from Jupyter is sent to the robot, the robot will send the PID data back to Jupyter notebook. I included the snippet on how the data is being processed as shown above.<br><br>
+
+                            **If you calculate the time below, you can see my system can send data for over 5 seconds which is more than was required for the Prelab!**<br><br>
                     </div>
                 </div>
                 <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
@@ -258,7 +260,7 @@
                             </iframe><br><br>
 
                             <h2 class="mb-0">Extrapolation </h2> 
-                            <strong> Frequency</strong>                            
+                            <strong> Frequency</strong>   <br><br>                         
                             In the beginning of the lab, I knew that I was having issues to the sampling period of the TOF. I figured out the reason why it was taking 1 sec (which is pretty long) 
                             for one sample of TOF data was becuase I did not have start rangining in my pervious code. When I added this one line, the time it took to sample data for one data point 
                             was 100ms or 10hz. Which is much faster compared to what I had previously! <br><br>
@@ -267,11 +269,11 @@
                             The frequency for the PID control was found to be around 8ms which is around 125hz. Since the frequency for the PID control is higher compared to that of what the TOF sensor is outputting. 
                             This implies that our PID control is faster than what our TOF sensor is outputting, and that would mean that the solution to this problem would be to use 
                             extrapolation in order to estimate the distance if the new data is not available. <br><br>
-                            Code snippet: 
+                            Code snippet: <br><br>
                             <img src="assets/img_lab5/extrapolated.png" alt="scanning" width="90%" /><br><br>
-                            Plot of extraplotation: 
+                            Plot of extraplotation: <br><br>
                             <img src="assets/img_lab5/PID_control_extraplotation.png" alt="scanning" width="90%" /><br><br>
-                            Video of robot with extraplotation code: 
+                            Video of robot with extraplotation code: <br><br>
                             <iframe
                             width="560"
                             height="315"
@@ -282,7 +284,7 @@
                             allowfullscreen>
                             </iframe><br><br>
 
-                            <strong> Testing Final System</strong>   
+                            <strong> Testing Final System</strong>   <br><br>
                             Using kp=.05, kd=1.5, and ki=.000003 I tested this system at different distance and surfaces as shown below: <br><br>
                             
                             At distance 3ft: <br><br>
@@ -314,7 +316,7 @@
                             Plot at distance about 5ft + carpet: <br><br>
                             <img src="assets/img_lab5/PID_control_final_carpet.png" alt="scanning" width="90%" /><br><br>
 
-                            <strong>5000 Level Task: Wind-Up Protection </strong>   
+                            <strong>5000 Level Task: Wind-Up Protection </strong> <br><br>
                             Discussed above!
 
 
@@ -322,7 +324,7 @@
                             I would say this lab was challenging in the fact that it was hard to predict what would be the best values for our system. 
                             I mean our robots can change, the batteries tend to die quick, so what I thought was good for a day I was working may have not been the best 
                             values as seen above. I mean when I saw the plots how my robot was able to have no overshoot and be able to stop at 1ft and have little to no oscillations was impressive. 
-                            However, the next day, these values no longer worked. I guess it was a fluke. However, it showed me how our batteries just die so quick and can impact the performace of that of the wheels. 
+                            However, the next day, these values no longer worked. I guess it was a fluke. However, it showed me how our batteries just die so quick and can impact the performace of that of the wheels. <br><br>
 
                             References: I used Mikayla and Stephans as a reference to understand what we are looking for. I also used the help of chatGPT to help me figure out the best course of action to debug my system. 
                         </p>
