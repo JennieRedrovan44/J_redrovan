@@ -55,23 +55,115 @@
                     <div class="flex-grow-1">
                         <h3 class="mb-0">Prelab</h3>
                         <p>
-                            Clearly describe how you handle sending and receiving data over Bluetooth? Consider adding code snippets as necessary to showcase how you implemented this on Arduino and Python
-                            Same thing as in Lab 5. Just change the format. Add images of setup.
+                          For this prelab, I did the bascially the same setup that I did for lab 5. I did not create new headers for this lab, rather I implmented into PID.cpp which was then called in to the void loop. 
+                          I did create three new cases, orientation_case, send_orientation, and stop_orientation. Code snippets and explanation shown below: <br><br>
+                          <strong>orientation_case</strong><br><br>
+                          <img src="assets/img_lab6/orientation_case.png" alt="scanning" width="90%" /><br><br>
+                          What occurs in this this case is that the frist values turns on and off the Orientation control. The next value controls the speed percent the user wants to implement on the robot. 
+                          As of right now, I did not implement speed in this code; however, it would be cool to incorporate in the future. The next value sets the angle that you would like, for example 90 degrees or 0 degrees. 
+                          The next three values are the kp, ki, kd that we get to change and send to the robot. <br><br>
+                          <strong>send_orientation</strong><br><br>
+                          <img src="assets/img_lab6/send_orientation_case.png" alt="scanning" width="90%" /><br><br>
+                          In this image, it calls the function that sends the data collected in the orientation_case and then sent to jupyter notebook.<br><br>
+                          <strong>stop_orientation</strong><br><br>
+                          <img src="assets/img_lab6/stop_orientation_case.png" alt="scanning" width="90%" /><br><br>
+                          A very simple case where it sets the run_orientation_case to zero, which turns of the orientation control. <br><br>
+
+                          How the data was processed is shown below from the jupyter notebook code: 
+                          <img src="assets/img_lab6/Jupter_notebook.png" alt="scanning" width="90%" /><br><br>
+                          Once the data was seperated into their individual arrays it was then processed to be graphed.
                         </p>
-                                                    
+                </div>
+            </div>
+            <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
+                <div class="flex-grow-1">
+                    <h3 class="mb-0">DMP: Digital Motion Processor</h3>
+                    <p>
+                        In Lab 2, I remember being confused about the drift and what it is, but I did observe drift in gyroscope data. This occurs because small measurement errors accumulate over time, leading to inaccurate orientation estimates 
+                        when using digital integration.<br><br>
+
+                        In order to minimize this issue, I used the ICM-20948’s Digital Motion Processor (DMP), which performs sensor fusion by combining gyroscope, accelerometer, and magnetometer data. This significantly reduces yaw drift and improves accuracy.<br><br>
+                        According to the the ICM-20948 gyroscope has a maximum rotational velocity range of ±250/±500/±1000/±2000 DPS (degrees per second) for 3-axis gyroscope. 
+                        The ±250 is typcially the default of ICM-20948, which is too small for rapid rotations. However, with the DMP automatically uses ±2000 DPS, and this is sufficient for the purposes of this lab. <br><br>
+                        Despite these improvements, the sensor still has limitations. Factors such as sensor bias, and high-frequency vibrations can introduce noise into the data. <br><br>
+
+                        To implement the DMP, I followed the lab instructions provided and modified the necessary code and configuration settings into my code.
+                        I implemented this code below to my loop in my PID.cpp
+                        <img src="assets/img_lab6/DMP1.png" alt="scanning" width="50%" /><br><br>
+
+                        Then with other classmates and the use of ChatGPT and google, I was able to implement with teh conversion from quaternion to angular yaw. Code snippet below: 
+                        <img src="assets/img_lab6/quanternion_to_yaw.png" alt="scanning" width="50%" /><br><br>
+
+                        In my void setup, I added this code below as per intructions: 
+                        <img src="assets/img_lab6/void_setup.png" alt="scanning" width="50%" /><br><br>
+
+                        Also, I forgot to mention that I uncommented "ICM_20948_USE_DMP" in the ICM_20948_C.h header, and I also included #define ICM_20948_USE_DMP in my ble.arduino. 
                     </p>
                 </div>
             </div>
             <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
                 <div class="flex-grow-1">
-                    <h3 class="mb-0">Task 1: </h3>
+                    <h3 class="mb-0">PI Controller </h3>
                     <p>
-                        Clearly describe how you handle sending and receiving data over Bluetooth? Consider adding code snippets as necessary to showcase how you implemented this on Arduino and Python
-                        Same thing as in Lab 5. Just change the format. Add images of setup.
+                        In the future I would like to fully implment PID into my controller, but I was running out of time so I decided that PI would suffice for now. <br><br>
+                        Below snippet of my code used for PI:
+                        <img src="assets/img_lab6/run_pid_orientation1.png" alt="scanning" width="50%" /><br><br>
+                        
+                        So, once I had the code as shown above, I frist started focusing on the value for kp that works for my system all while I kept ki and kp 0. 
+                        At frist I started using the kp that I found in the previous lab which was kp=.05 but quickly I found that that it did not work for my system given that it gave me small PWM values. 
+                        However, I then kept increasing kp until I found that kp=4 was the perfect value given that it gave me better corrections. I set the angle to be zero. <br><br>
+                        
+                        Graphs: <br><br>
+                        <img src="assets/img_lab6/IMG_kp4_angle.png" alt="scanning" width="50%" /><br><br>
+                        <img src="assets/img_lab6/IMG_kp4_error.png" alt="scanning" width="50%" /><br><br>
+                        <img src="assets/img_lab6/IMG_kp4_PWM.png" alt="scanning" width="50%" /><br><br>
+                        
+                        I then added ki, which I started really small given what occured last lab. After testing for quite some time, I saw good performace from ki value of .15 as shown below: 
+                        Graphs: <br><br>
+                        <img src="assets/img_lab6/IMG_kp4_ki_.15_angle.png" alt="scanning" width="50%" /><br><br>
+                        <img src="assets/img_lab6/IMG_kp4_ki_.15_errror.png" alt="scanning" width="50%" /><br><br>
+                        <img src="assets/img_lab6/IMG_kp4_ki_.15_PWM.png" alt="scanning" width="50%" /><br><br>
+                        
+                        Video: <br><br>
+                        <iframe
+                            width="560"
+                            height="315"
+                            src="https://www.youtube.com/embed/eRgJw-QyshA"
+                            title="YouTube video player"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowfullscreen>
+                            </iframe><br><br>
                     </p>
-                                                
-                </p>
+                </div>
             </div>
-        </div>
+            <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
+                <div class="flex-grow-1">
+                    <h3 class="mb-0">Sampling </h3>
+                    <p>
+                        Similar to lab 5, I sampled the rate at which the ICM-20948's DMP is proceessing at around 5ms or 200hz just for the yaw. I did by printing the dt between the current to the old time outside the loop.
+                    </p>
+                </div>
+            </div>
+            <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
+                <div class="flex-grow-1">
+                    <h3 class="mb-0">5000 Level Task:Windup Protection</h3>
+                    <p>
+                        Similar to lab 5, since we had a integrator we had to have protection from the integrator to ensure it the error does not grow out of bounds. 
+                        The constraint can be seen in my code for PID, I implemented given that I was scared that my car would go crazy like last lab when there was no wind-up protection. <br><br>
+                    </p>
+                </div>
+            </div>
+            <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
+                <div class="flex-grow-1">
+                    <h3 class="mb-0">Conclusion </h3>
+                    <p>
+                        In this lab, I was able to learn more about the IMU and the limitations that it has as well as the implementation that can be done on it. <br><br>
+                        References: I worked with Sana and Lulu and collaborated to figure out this lab. When we were working,t two of the batteries kept dying even though it was charged for a while (more than 40 mins), and we were left with only 
+                        one battery that worked. Which meant the 3 of us shared the hardware but we ran our code separately. Also, I referenced Mikayla, Stephans, and Nila's work for lab 6. 
+                    </p>
+                </div>
+            </div>
+
 
         
