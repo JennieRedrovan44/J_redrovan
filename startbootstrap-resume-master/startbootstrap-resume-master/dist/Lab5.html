@@ -95,8 +95,7 @@
                             The PID equation is shown below:<br><br>
                             <img src="assets/img_lab5/PID_equation.png" alt="scanning" width="50%" /><br><br>
                             The final code that I used throughout the lab is shown below:<br><br>
-                            When the command from Jupyter is sent to the robot, the robot will start the PID controller given that run_PID_CASE will now be 1 <br><br>
-                            When run_PID_CASE is 1 it will start the PID which is called in the void loop. Code snippet below:<br><br>
+                            When the command from Jupyter is sent to the robot, the robot will start the PID controller given that run_PID_CASE will now be 1. Code snippet below:<br><br>
                             <img src="assets/img_lab5/FINAL_CODE.png" alt="scanning" width="90%" /><br><br>
                             The forward and backward functions are called in the PID_start function, the corresponding code snippet is shown below:<br><br>
                             <img src="assets/img_lab5/IMG_start_PID_PRELAB_forward.png" alt="scanning" width="90%" /><br><br>
@@ -212,7 +211,69 @@
                             allowfullscreen>
                             </iframe><br><br>
 
-                            As you can see, at kd =.3 is where the robot 
+                            As you can see, at kd =.3 is where the robot is the most stable and has the least amount of oscillations. <br><br>
+                            Especially compared at kd=5 where the robot was struggling and sluggish to get to 304mm setpoint. Also, I have to mention when looking at the plots, you can see that the oscialltions
+                            as it settles to the setpoint is very minimal, but there are many spikes in the PID value. <br><br>
+                            
+                            <h2 class="mb-0">Implementing Ki </h2> 
+                            Finally, I implemented ki. Before I added the ki, I notcied that the my car kept crashing into the wall or starting going crazy. I included a video of me sending a very small ki, and my car going super fast 
+                            even though it is close to a wall. <br><br>
+                            <iframe
+                            width="560"
+                            height="315"
+                            src="https://www.youtube.com/embed/tHntxdakb4o"
+                            title="YouTube video player"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowfullscreen>
+                            </iframe><br><br>
+
+                            The reason why this was occuring was becuase the integral gain (Ki) is the sum of the error over time. Hence, since it is adding and adding the error over time it will be incresing which will impact the speed that the robot goes and how fast the TOF is responding. Even so, 
+                            when ki is contrained as I did in my code, it can be used to eliminate the steady-state error. <br><br>
+
+                            I kept kp the same, but I tested different kd and ki. I will show plots for each experimentation, I did not take videos each time sadly: <br><br>
+
+                            <strong>Plots for kd=.5 and ki=00000005</strong><br><br>
+                            <img src="assets/img_lab5/PD_control_.05p_5d_calibration.png" alt="scanning" width="90%" /><br><br>
+                            <strong>Plots for kd=.5 and ki=.00005</strong><br><br>
+                            <img src="assets/img_lab5/PD_control_.05p_5d_calibration.png" alt="scanning" width="90%" /><br><br>
+                            <strong>Plots for kd=1.4 and ki=.000003</strong><br><br>
+                            <img src="assets/img_lab5/PD_control_.05p_5d_calibration.png" alt="scanning" width="90%" /><br><br>
+                            <strong>Plots for kd=1.5 and ki=.000003</strong><br><br>
+                            <img src="assets/img_lab5/PD_control_.05p_5d_calibration.png" alt="scanning" width="90%" /><br><br>
+                            
+
+                            So, for the plots shown above, specifically at kd=.5 and ki=00000005, my robot was able to reach the setpoint and did not overshoot. However, when I tried it the next day, that no longer worked. 
+                            So, I went with the second best which was kd=1.5 and ki=.000003. With this controller it was more consistant and I was able repeat it multiple times as shown below. 
+                            <iframe
+                            width="560"
+                            height="315"
+                            src="https://www.youtube.com/embed/9hq9Bpgez_4"
+                            title="YouTube video player"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowfullscreen>
+                            </iframe><br><br>
+
+                            <h2 class="mb-0">Extrapolation </h2> 
+                            <strong> Frequency</strong>                            
+                            In the beginning of the lab, I knew that I was having issues to the sampling period of the TOF. I figured out the reason why it was taking 1 sec (which is pretty long) 
+                            for one sample of TOF data was becuase I did not have start rangining in my pervious code. When I added this one line, the time it took to sample data for one data point 
+                            was 100ms or 10hz. Which is much faster compared to what I had previously! <br><br>
+                            Code used to output the frequency:<br><br>
+                            <img src="assets/img_lab5/IMG_frequency.png" alt="scanning" width="90%" /><br><br>
+                            The frequency for the PID control was found to be around 8ms which is around 125hz. Since the frequency for the PID control is higher compared to that of what the TOF sensor is outputting. 
+                            This implies that our PID control is faster than what our TOF sensor is outputting, and that would mean that the solution to this problem would be to use 
+                            extrapolation in order to estimate the distance if the new data is not available. <br><br>
+                            
+                            
+
+
+                            
+
+
+
+
 
 
 
