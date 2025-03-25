@@ -87,7 +87,7 @@
                         <p>
                         From there, we can start configuring the Kalman Filter. <br><br>
                         The eqautions shown below are the basis to calculate the Kalman Filter: <br><br>
-                        <img src="assets/img_lab7/Kalman_Filter.png" alt="Kalman Filter" width="90%" /><br><br>
+                        <img src="assets/img_lab7/kf.png" alt="Kalman Filter" width="90%" /><br><br>
                         The first step is to calculate the state transition matrix, which is shown below: <br><br>
                         <img src="assets/img_lab7/state_space.png" alt="Drag Equation" width="90%" /><br><br>
                         Which resulted in: <br><br>
@@ -123,8 +123,31 @@
                         sigma 3 = 40; <br><br>
                         <img src="assets/img_lab7/kalaman_40.png" alt="Drag Equation" width="90%"/><br><br>
                         </p>   
+                        <p> 
+                            Observations: What I noticed at sigma 3 = 5, the Kalman Filter was able to predict the very well. However, as sigma 3 increased, the Kalman Filter was not able to predict the distance as well. <br><br>
+
+                        </p>
                     </div>
                 </div>
+                <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
+                    <div class="flex-grow-1">
+                        <h3 class="mb-0">Task 2: Implementing on Robot</h3>
+                        <p>
+                        I did not have the time to be able to implement the Kalman Filter on the robot. <br><br>
+                        However, I was under the assumption that we did not have to implement the Kalman Filter on the robot, but rather just calculate the values for the filter on python. <br><br>
+                        As it was mentioned in the lab hand out that "if you have time, you can implement the Kalman Filter on the robot". <br><br>
+                        As shown here: <br><br>
+                        <img src="assets/img_lab7/kalaman_lab.png" alt="Robot" width="90%"/><br><br>
+                        However, I will include snippts of my code that I would have used to implement the Kalman Filter on the robot. <br><br>
+                        I truly tried, but I was not able to get the code to work. <br><br>
+                        
+
+
+                        </p>
+                    </div>
+                </div>
+                
+
 
 
         <!-- Bootstrap core JS-->
