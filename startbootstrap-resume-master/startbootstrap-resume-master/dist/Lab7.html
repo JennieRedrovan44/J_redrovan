@@ -65,40 +65,63 @@
                         <h3 class="mb-0">Task 1: Estimating Drag and Momentum</h3>
                         <p>
                         The frist step into implementing the Kalman Filter is to develop a state space model of the robot, as shown below: <br><br>
-                        <img src="assets/img_lab7/state_space.png" alt="State Space Model" width="500" height="300"><br><br>
+                        <img src="assets/img_lab7/state_space.png" alt="State Space Model" width="90%" /><br><br>
                         Which use drag and mass, I calculated using the equations below: <br><br>
-                        <img src="assets//img_lab7/Drag_mass_calculations.png" alt="Drag Equation" width="500" height="300"><br><br>
+                        <img src="assets//img_lab7/Drag_mass_calculations.png" alt="Drag Equation" width="90%" /><br><br>
 
                         However, before calculating the drag and mass, I had to drive my wall at a constant PWM input while recording the distance, time, and the PWM  value. <br><br>
                         I wrote a new piece of code which would drive the robot at a constant PWM value and record the distance and PWM value as shown below: <br><br>
-                        <img src="assets/img_lab7/lab7.png" alt="Constant PWM" width="500" height="300"><br><br>
+                        <img src="assets/img_lab7/lab7.png" alt="Constant PWM" width="90%" /><br><br>
                         I also created a velocity calculation based off the distance and time: <br><br>
-                        <img src="assets/img_lab7/velocity.png" alt="Velocity Calculation" width="500" height="300"><br><br>
+                        <img src="assets/img_lab7/velocity.png" alt="Velocity Calculation" width="90%" /><br><br>
                         Which resulted in the following graph for distance, PWM, and velocity: <br><br>
-                        <img src="assets/img_lab7/AMAZING_LOVE.png" alt="Velocity Graph" width="500" height="300"><br><br>
+                        <img src="assets/img_lab7/AMAZING_LOVE.png" alt="Velocity Graph" width="90%" /><br><br>
                         Once I had this graph, I was able to calculate the steady state speed, as well as what the rise time was for 90% of the steady state speed. <br><br>
-                        <img src="assets/img_lab7/AMAZING_LOVE_withlines.png" alt="Steady State" width="500" height="300"><br><br>
+                        <img src="assets/img_lab7/AMAZING_LOVE_withlines.png" alt="Steady State" width="90%" /><br><br>
                         As seen above, my steady state velocity was 2.5 m/s, and my rise time was 0.98s. <br><br>
                         Using this information, I was able to calculate the drag and mass of the robot. <br><br>
-                        <img src="assets/img_lab7/Drag_mass_calculations.png" alt="Drag Equation" width="500" height="300"><br><br>
+                        <img src="assets/img_lab7/Drag_mass_calculations.png" alt="Drag Equation" width="90%" /><br><br>
                         The drag coefficient was calculated to be 0.4444 and the mass was calculated to be 0.1892kg. <br><br>
 
                         </p>
-
+                        <p>
                         From there, we can start configuring the Kalman Filter. <br><br>
                         The eqautions shown below are the basis to calculate the Kalman Filter: <br><br>
-                        <img src="assets/img_lab7/Kalman_Filter.png" alt="Kalman Filter" width="500" height="300"><br><br>
+                        <img src="assets/img_lab7/Kalman_Filter.png" alt="Kalman Filter" width="90%" /><br><br>
                         The first step is to calculate the state transition matrix, which is shown below: <br><br>
-                        <img src="assets/img_lab7/state_space.png" alt="Drag Equation" width="500" height="300"><br><br>
+                        <img src="assets/img_lab7/state_space.png" alt="Drag Equation" width="90%" /><br><br>
                         Which resulted in: <br><br>
-                        <img src="assets/img_lab7/state_space_results.png" alt="Drag Equation" width="500" height="300"><br><br>
+                        <img src="assets/img_lab7/state_space_results.png" alt="Drag Equation" width="90%" /><br><br>
                         Then we can calcualte the discrete-time distance readings, which is shown below: <br><br>
-                        <img src="assets/img_lab7/discrete_time.png" alt="Drag Equation" width="500" height="300"><br><br>
+                        <img src="assets/img_lab7/discrete_time.png" alt="Drag Equation" width="90%" /><br><br>
                         Which resulted in: <br><br>
-                        <img src="assets/img_lab7/discrete_time_results.png" alt="Drag Equation" width="500" height="300"><br><br>
-                        Finally, I calculated vector state x to be the frist TOF data as well as set uss=1 <br><br>
-                        
-                        
+                        <img src="assets/img_lab7/discrete_time_results.png" alt="Drag Equation" width="90%" /><br><br>
+                        Finally, I calculated vector state x to be the frist TOF data as well as set uss=1 N (which is the sets command to 100% input) <br><br>
+                        <img src="assets/img_lab7/x_state_uss.png" alt="Drag Equation" width="90%"/><br><br>
+
+                        Next, I roughly estimated the noise covariance matrice (simga_u) and the noise covariance matrice (sigma_z). As shown below:
+                        <img src="assets/img_lab7/sigmas.png" alt="Drag Equation" width="90%"/><br><br>
+                        I kept sigma 1 and 2 constant, but I varied sigma 3 which is the noise covariance matrice for the TOF sensor. <br><br>
+                        Which resulted in the following results: <br><br>
+                        <img src="assets/img_lab7/sigmas_results.png" alt="Drag Equation" width="90%"/><br><br>
+
+                        Now we can calculate the Kalman Filter. <br><br>
+                        Referencing Stephan's, I was able to implement the kalaman function to perform each step of the filter<br><br>
+                        <img src="assets/img_lab7/kalaman_urmom.png" alt="Drag Equation" width="90%"/><br><br>
+                        Steps through discrete time: <br><br>
+                        <img src="assets/img_lab7/uncertainties_equations.png" alt="Drag Equation" width="90%"/><br><br>
+                        I then ran the Kalman Filter code and plotted the results for sigma 3 = 5, 10, 15, 20, and 40. <br><br>
+                        Results: <br><br>
+                        sigma 3 = 5; <br><br>
+                        <img src="assets/img_lab7/kalaman_5.png" alt="Drag Equation" width="90%"/><br><br>
+                        sigma 3 = 10; <br><br>
+                        <img src="assets/img_lab7/kalaman_10.png" alt="Drag Equation" width="90%"/><br><br>
+                        sigma 3 = 15; <br><br>
+                        <img src="assets/img_lab7/kalaman_15.png" alt="Drag Equation" width="90%"/><br><br>
+                        sigma 3 = 20; <br><br>
+                        <img src="assets/img_lab7/kalaman_20.png" alt="Drag Equation" width="90%"/><br><br>
+                        sigma 3 = 40; <br><br>
+                        <img src="assets/img_lab7/kalaman_40.png" alt="Drag Equation" width="90%"/><br><br>
                         </p>   
                     </div>
                 </div>
