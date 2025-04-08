@@ -63,9 +63,14 @@
                     <div class="flex-grow-1">
                         <h3 class="mb-0">Task A: Flip</h3>
                         <p>
-                        The stunt that I chose to do was a flip. At frist, I attempted to detect the distance and once it detected the distance, it would stop, flip, and then go backwords. 
-                        However, everytime I attemped to flip or make the robot stop at a certain distance, it would hit the wall. I then decided, that maybe my TOF sensor was not dectecting 
-                        the distance as quickly, so I implemented the kalaman filter, but the issue presisted. I included the snippet of the code that I did not use to do the flips, but shows that I tried. 
+                                <p>
+                                The stunt I chose to do was a front flip. At first, I attempted to detect the wall using the ToF sensor. Once it reached the target distance, the robot would stop, flip, and then drive backwards.
+                                </p>
+                                <p>
+                                However, the robot consistently hit the wall. I suspected this was due to delays in distance sensing, so I implemented a Kalman filter to improve sensor responsiveness. Unfortunately, the issue persisted.
+                                </p>
+                                
+                        I included the snippet of the code that I did not use to do the flips, but shows that I tried. 
                         Also, I would like to mention that I got my Kalman filter to work on my PID, and when I tested it out on the PID it was working just fine and was able to detect the wall. 
 
 
