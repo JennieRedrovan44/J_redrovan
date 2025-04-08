@@ -74,15 +74,15 @@
 
                         Although I didn’t end up using this distance-based flip logic in my final implementation, I’ve included a snippet of the code to demonstrate the attempt. On a positive note, I successfully integrated the Kalman filter into my PID controller for wall detection, and during those tests, it performed more reliably and did not freak out on me.<br><br>
 
-                        Finally, I forgot to mention that I used a sticky mat to help the robot flip. I also taped my back wheels which helped the robor flip better. Akso, I cleaned the wheels of my robot becuase the floor was 
+                        Finally, I forgot to mention that I used a sticky mat to help the robot flip. I also taped my back wheels which helped the robor flip better. Also, I cleaned the wheels of my robot becuase the floor was 
                         dusty which meant that the wheels lost grip and would not excuate what it was asked for. <br><br>
 
 
-                        <img src="assets/img_lab7/lab8_did_not_work.png" alt="Flip Code Snippet" width="500" height="500"><br><br>
+                        <img src="assets/img_lab7/lab8_did_not_work.png" alt="Flip Code Snippet" width="90%" /><br><br>
 
                         In my actual implementation, I used a different approach. I set the robot to drive forward for a specific duration, then execute the flip, and finally drive backward for a set time. This method worked effectively, and I was able to successfully perform the flip without any collisions.<br><br>
                         Snippet of the code that I used to do the flip:
-                        <img src="assets/img_lab7/lab8_working_code.png" alt="Flip Code Snippet" width="500" height="500"><br><br>
+                        <img src="assets/img_lab7/lab8_working_code.png" alt="Flip Code Snippet" width="90%" /><br><br>
                         In the code above, I only collected distance data while the robot was moving forward, as I initially didn’t think backward movement data would be relevant. For the forward motion, I set the motor speed to the maximum value of 255. During testing, I found that using my calibrated wheel speeds didn’t produce enough momentum for the robot to successfully complete the flip. However, when using the maximum speed, the robot was able to flip as expected. <br><br>
 
                         By hard-coding the flip, I was able to get it to flip as shown below: <br><br>
@@ -95,7 +95,7 @@
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                             allowfullscreen>
                         </iframe><br><br>
-                        <img src="assets/img_lab7/lab8_video_1_trial2.png" alt="Flip Code Snippet" width="500" height="500"><br><br>
+                        <img src="assets/img_lab7/lab8_video_1_trial2.png" alt="Flip Code Snippet" width="90%" /><br><br>
                         <iframe
                             width="560"
                             height="315"
@@ -105,7 +105,7 @@
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                             allowfullscreen>
                         </iframe><br><br>
-                        <img src="assets/img_lab7/lab8_video2_trial_2.png" alt="Flip Code Snippet" width="500" height="500"><br><br>
+                        <img src="assets/img_lab7/lab8_video2_trial_2.png" alt="Flip Code Snippet" width="90%" /><br><br>
                         <iframe
                         width="560"
                         height="315"
@@ -115,7 +115,7 @@
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                         allowfullscreen>
                     </iframe><br><br>
-                    <img src="assets/img_lab7/lab8_video3" alt="Flip Code Snippet" width="500" height="500"><br><br>
+                    <img src="assets/img_lab7/lab_VIDEO3.png" alt="Flip Code Snippet" width="90%" /><br><br>
 
                         </p>
                     </div>
@@ -123,6 +123,15 @@
                 <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
                     <div class="flex-grow-1">
                         <h3 class="mb-0">Bloopers</h3>
+                        <iframe
+                        width="560"
+                        height="315"
+                        src="https://www.youtube.com/embed/XRU9Rcgvm4o"
+                        title="YouTube video player"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowfullscreen>
+                    </iframe><br><br>
                         <p>
                         
                         </p>
