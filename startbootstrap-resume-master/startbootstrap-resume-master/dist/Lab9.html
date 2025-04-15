@@ -111,35 +111,57 @@
                     <div class="flex-grow-1">
                         <h3 class="mb-0">Merge and Plot readings</h3>
                         <p>
-                            Next, I converted the distance readings (which were taken relative to the robot) into global coordinates for the hallway map. I used a 3x3 transformation matrix <code>T</code> that rotates and shifts each point based on the robot’s orientation and position:<br><br>
-                        
-                            <code>
-                                T = [R | d] = 
-                                [
-                                cos(θ)  -sin(θ)  x <br>
-                                sin(θ)   cos(θ)  y <br>
-                                0           0           1
-                                ]
-                            </code><br><br>
-                        
-                            I also used two position vectors <code>P₁</code> and <code>P₂</code> to represent where the front and rear TOF sensors are on the robot:<br><br>
-                        
-                            <code>
-                                P₁ = [
-                                TOF₁ <br>
-                                0 <br>
-                                1
-                                ] &nbsp;&nbsp;&nbsp;
-                                P₂ = [
-                                -TOF₂ <br>
-                                0 <br>
-                                1
-                                ]
-                            </code><br><br>
-                        
-                            In my case, the front sensor <code>TOF₁</code> is about 2.5 inches in front of center, and the rear sensor <code>TOF₂</code> is about 3 inches behind center. I applied these offsets to the readings from each sensor, then used the transformation matrix to convert everything into global hallway coordinates.<br><br>
-                        
-                            After plotting all the data together, I got a rough map of the hallway based on both sensors from four different positions. Each spot had its own little quirks, but overall it gave me a decent idea of the space.
+                        <div style="font-family: Arial, sans-serif; line-height: 1.6; max-width: 700px;">
+                                <h2>Transformation Mathematics</h2>
+                              
+                                <p>The transformation from <strong>polar</strong> to <strong>Cartesian</strong> coordinates involves two main steps:</p>
+                              
+                                <h3>1. Convert Polar to Local Cartesian Coordinates</h3>
+                                <p>Given a point in polar coordinates <em>(r, θ)</em>, the local Cartesian coordinates are:</p>
+                                <p>
+                                  <code>x<sub>local</sub> = r · cos(θ)</code><br>
+                                  <code>y<sub>local</sub> = r · sin(θ)</code>
+                                </p>
+                              
+                                <h3>2. Transform Local to Global Map Coordinates</h3>
+                                <p>
+                                  Apply a transformation matrix to convert local coordinates to global coordinates using the robot's position and orientation <em>(x<sub>robot</sub>, y<sub>robot</sub>, α)</em>:
+                                </p>
+                                <p>
+                                  <code>x<sub>global</sub> = cos(α) · x<sub>local</sub> - sin(α) · y<sub>local</sub> + x<sub>robot</sub></code><br>
+                                  <code>y<sub>global</sub> = sin(α) · x<sub>local</sub> + cos(α) · y<sub>local</sub> + y<sub>robot</sub></code>
+                                </p>
+                              
+                                <h3>3. Scale Distance Units</h3>
+                                <p>
+                                  To convert distances from millimeters to feet:
+                                </p>
+                                <p><code>distance (feet) = distance (mm) / 304.8</code></p>
+                        </div>
+                         After plotting all the data together, I got a rough map of the hallway based on both sensors from four different positions. Each spot had its own little quirks, but overall it gave me a decent idea of the space as shown below:<br><br>
+                            <img src="assets/img_lab9/mapbetter.png" alt="Locations" width="90%" /><br><br>
+                        </p>
+                    </div>
+                </div>
+                <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
+                    <div class="flex-grow-1">
+                        <h3 class="mb-0">Edges</h3>
+                        <p>
+                        <div style="font-family: Arial, sans-serif; line-height: 1.6; max-width: 700px;">
+                            <img src="assets/img_lab9/linearstuff.png" alt="Locations" width="90%" /><br><br>
+
+                            Comparing to the hallway, I can see that the robot was able to estimate the edges of the hallway, but I would say that it detected the edges of the hallway was not the best given that there were people or stuff in the way of the robot.
+                            If, I had the oppurninty to test it in the lab, I would have been able to get a better estimate compared to what I got. <br><br>
+                        </p>
+                    </div>
+                </div>
+                <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
+                    <div class="flex-grow-1">
+                        <h3 class="mb-0">Conclusion</h3>
+                        <p>
+                        <div style="font-family: Arial, sans-serif; line-height: 1.6; max-width: 700px;">
+                            <img src="assets/img_lab9/linearstuff.png" alt="Locations" width="90%" /><br><br>
+                            This lab was hard but a lot of fun at the same time. I learned a lot. I worked with Sana, Lulu, Henry, and Daniela on this lab. 
                         </p>
                     </div>
                 </div>
