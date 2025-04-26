@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Jennie Redrovan</title>
+        <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico" />
+        <!-- Font Awesome icons (free version)-->
+        <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+        <!-- Google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:500,700" rel="stylesheet" type="text/css" />
+        <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i" rel="stylesheet" type="text/css" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="css/styles.css" rel="stylesheet" />
+    </head>
+    <body id="page-top">
+        <!-- Navigation-->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav">
+            <a class="navbar-brand js-scroll-trigger" href="#about">
+                <span class="d-block d-lg-none">Jennie Redrovan</span>
+                <span class="d-none d-lg-block">
+                    <img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="assets/img/Picofme.png" alt="Profile Picture" />
+                </span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="index.html">About</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="Lab1a.html">Lab 1A: Artemis</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="Lab1B.html">Lab 1B: Bluetooth</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="Lab2.html">Lab 2: IMU</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="Lab3.html">Lab 3: TOF</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="Lab4.html">Lab 4: Motor Drivers, Open Loop Control</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="Lab5.html">Lab 5: Speed Control</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="Lab6.html">Lab 6: Orientation Control</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="Lab7.html">Lab 7: Kalman Filter</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="Lab8.html">Lab 8: Stunts!</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="Lab9.html">Lab 9: Mapping</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="Lab10.html"style="color: rgb(255, 255, 255);">Lab 10: Bayes Filter (Sim)</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="Lab11.html">Lab 11: Localization (Real)</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="Lab12.html">Lab 12: Path Planning</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <section class="resume-section" id="about">
+            <div class="resume-section-content">
+                <h2 class="mb-2">Lab 10: <span class="text-primary">Localization (sim)</span></h2>
+                <!--Prelab-->
+                <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
+                    <div class="flex-grow-1">
+                        <h3 class="mb-0"></h3>
+                        <p>
+                            <p>The purpose of this lab is to implement grid localization using a Bayes filter in a simulated environment. Before starting, I reviewed the lecture slides and background material to better understand how the Bayes filter works and why it is useful for localization.</p>
+
+                            <p>The Bayes filter is broken down into two main steps: the <b>prediction</b> step and the <b>update</b> step. It uses the previous belief distribution \( bel(x_{t-1}) \), the control input \( u_t \), and the new sensor measurement \( z_t \) to calculate the updated belief distribution \( bel(x_t) \). The prediction step estimates the robot's new position based on its movement, while the update step refines this estimate by incorporating sensor data and normalizing the resulting distribution.</p>
+                            
+                            <p>For the prelab, I set up the simulator by following the provided instructions, installing Box2D and Pygame, and cloning the starter repository. I familiarized myself with the simulator by running basic open-loop and closed-loop controllers. I also reviewed grid localization, where the robot’s continuous position (x, y, and θ) is discretized into a 12 × 9 × 18 grid, allowing Bayes filtering to approximate the robot’s pose over 1944 possible states.</p>
+                            
+                        </p>   
+                    </div>
+                </div>
+                <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
+                    <div class="flex-grow-1">
+                        <h3 class="mb-0">Orientation Control</h3>
+                        <p>
+                            For mapping, I went with orientation control. Initially, my robot wasn’t performing well at angles other than zero. After talking to Aidan Derocher, he pointed out that my Kp was too high, which was causing the system to overshoot. I lowered Kp to 0.9 and added a Ki value of 0.01. That made the robot way more stable and able to hold its position at different angles. Once it was tuned, I was able to get 24-degree increments and take 3 readings per spot. To run the mapping routine, I added a BLE command to the Artemis that would start the process.<br><br>
+                            code snippet:<br><br>
+                            <img src="assets/img_lab9/mapit1_ble.png" alt="Flip Code Snippet" width="90%" /><br><br>
+                            <img src="assets/img_lab9/mapit2_ble.png" alt="Flip Code Snippet" width="90%" /><br><br>
+                            <img src="assets/img_lab9/mapit3_ble.png" alt="Flip Code Snippet" width="90%" /><br><br>
+
+                            This command makes the car turn to each angle using the PID controller until it’s close enough—within 4 degrees. Once it gets there, it takes 3 TOF readings while staying still. In Python, I set the step size to 24 degrees, which gave me 45 data points per spot.
+
+                            While testing, I tuned the PID values to make the turns smoother and more consistent (Kp = 1.0 , Ki = 0.01, Kd = 0). You can see how it moves in the video below.
+                            <iframe
+                            width="560"
+                            height="315"
+                            src="https://www.youtube.com/embed/w33BsmkBDJE"
+                            title="YouTube video player"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowfullscreen>
+                        </iframe><br><br>
+                            While I do see that my robot does go a little slower than it should be when rotating, but I found that keeping at this kp and ki kept the car from going unstable. I would like to tune it a little more, but I did not have much time as I would hope. <br><br>
+                        </p>
+                    </div>
+                </div>
+                <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
+                    <div class="flex-grow-1">
+                        <h3 class="mb-0">rReadings</h3>
+                        <p>
+                            Since I got mapping to work after office hours, I could not use the four desinated locations in the arena setup in the lab. Instead, I used the hallway and placed my robot in four distinct locations. 
+                            After taking the measurement from each location, I sent the data over to python which I would later be able to plot. <br><br>
+                            I was able to get a good amount of data from each location. I was able to get 3 readings per angle, and I took 15 angles per location. I then averaged the data and plotted it in polar coordinates. <br><br>
+                            Location where I took the measurements:<br><br>
+                            <img src="assets/img_lab9/location.png" alt="Locations" width="90%" /><br><br>
+                            I marked approximately where I took the measurements in the image above. <br><br>
+                            I then plotted in the polar coordinate plot. <br><br>
+                            Location 1:<br><br>
+                            <img src="assets/img_lab9/frist_reading_distance.png" alt="Locations" width="90%" /><br><br>
+                            Location 2: <br><br>
+                            <img src="assets/img_lab9/2nd_reading_distance.png" alt="Locations" width="90%" /><br><br>
+                            Location 3: <br><br>
+                            <img src="assets/img_lab9/3rd_reading_distance.png" alt="Locations" width="90%" /><br><br>
+                            Location 4: <br><br>
+                            <img src="assets/img_lab9/4th_reading_distance.png" alt="Locations" width="90%" /><br><br>
+                        </p>
+                    </div>
+                </div>
+                <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
+                    <div class="flex-grow-1">
+                        <h3 class="mb-0">Merge and Plot readings</h3>
+                        <p>
+                        <div style="font-family: Arial, sans-serif; line-height: 1.6; max-width: 700px;">
+                                <h2>Transformation Mathematics</h2>
+                              
+                                <p>The transformation from <strong>polar</strong> to <strong>Cartesian</strong> coordinates involves two main steps:</p>
+                              
+                                <h3>1. Convert Polar to Local Cartesian Coordinates</h3>
+                                <p>Given a point in polar coordinates <em>(r, θ)</em>, the local Cartesian coordinates are:</p>
+                                <p>
+                                  <code>x<sub>local</sub> = r · cos(θ)</code><br>
+                                  <code>y<sub>local</sub> = r · sin(θ)</code>
+                                </p>
+                              
+                                <h3>2. Transform Local to Global Map Coordinates</h3>
+                                <p>
+                                  Apply a transformation matrix to convert local coordinates to global coordinates using the robot's position and orientation <em>(x<sub>robot</sub>, y<sub>robot</sub>, α)</em>:
+                                </p>
+                                <p>
+                                  <code>x<sub>global</sub> = cos(α) · x<sub>local</sub> - sin(α) · y<sub>local</sub> + x<sub>robot</sub></code><br>
+                                  <code>y<sub>global</sub> = sin(α) · x<sub>local</sub> + cos(α) · y<sub>local</sub> + y<sub>robot</sub></code>
+                                </p>
+                              
+                                <h3>3. Scale Distance Units</h3>
+                                <p>
+                                  To convert distances from millimeters to feet:
+                                </p>
+                                <p><code>distance (feet) = distance (mm) / 304.8</code></p>
+                        </div>
+                         After plotting all the data together, I got a rough map of the hallway based on both sensors from four different positions. Each spot had its own little quirks, but overall it gave me a decent idea of the space as shown below:<br><br>
+                            <img src="assets/img_lab9/map_orginal.png" alt="Locations" width="90%" /><br><br>
+                        </p>
+                    </div>
+                </div>
+                <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
+                    <div class="flex-grow-1">
+                        <h3 class="mb-0">Edges</h3>
+                        <p>
+                        <div style="font-family: Arial, sans-serif; line-height: 1.6; max-width: 700px;">
+                            <img src="assets/img_lab9/linearstuff.png" alt="Locations" width="90%" /><br><br>
+
+                            Comparing to the hallway, I can see that the robot was able to estimate the edges of the hallway, but I would say that it detected the edges of the hallway was not the best given that there were people or stuff in the way of the robot.
+                            If, I had the oppurninty to test it in the lab, I would have been able to get a better estimate compared to what I got. <br><br>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
+                    <div class="flex-grow-1">
+                        <h3 class="mb-0">Conclusion</h3>
+                        <p>
+                        <div style="font-family: Arial, sans-serif; line-height: 1.6; max-width: 700px;">
+                            This lab was hard but a lot of fun at the same time. I learned a lot. I worked with Sana, Lulu, Henry, and Daniela on this lab. 
+                        </p>
+                    </div>
+                </div>
+                
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="js/scripts.js"></script>
+    </body>
+</html>
