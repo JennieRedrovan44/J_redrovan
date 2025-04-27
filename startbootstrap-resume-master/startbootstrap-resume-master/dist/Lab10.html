@@ -55,11 +55,15 @@
                     <div class="flex-grow-1">
                         <h3 class="mb-0"></h3>
                         <p>
-                            <p>The purpose of this lab is to implement grid localization using a Bayes filter in a simulated environment. Before starting, I reviewed the lecture slides and background material to better understand how the Bayes filter works and why it is useful for localization.</p>
+                            <p>Lab 10 focuses on using a Python simulation to implement grid localization for a virtual robot in a 2D environment, similar to the arena used in previous labs. Before starting, I set up the simulator by installing Box2D, Pygame, and cloning the starter repository as instructed.</p>
 
-                            <p>The Bayes filter is broken down into two main steps: the <b>prediction</b> step and the <b>update</b> step. It uses the previous belief distribution bel(x<sub>t-1</sub>), the control input u<sub>t</sub>, and the new sensor measurement z<sub>t</sub> to calculate the updated belief distribution bel(x<sub>t</sub>). The prediction step estimates the robot's new position based on its movement, while the update step refines this estimate by incorporating sensor data and normalizing the resulting distribution.</p>
+                            <p>Localization is the process of estimating where a robot is in space based on noisy sensor and motion data. Since the robot has no direct access to its true position, we use a probabilistic approach through a Bayes filter to maintain and update a belief about its location over time.</p>
 
-                            <p>For the prelab, I set up the simulator by following the provided instructions, installing Box2D and Pygame, and cloning the starter repository. I familiarized myself with the simulator by running basic open-loop and closed-loop controllers. I also reviewed grid localization, where the robot’s continuous position (x, y, and θ) is discretized into a 12 × 9 × 18 grid, allowing Bayes filtering to approximate the robot’s pose over 1944 possible states.</p>
+                            <p>The Bayes filter operates in two steps: a <b>prediction</b> step and an <b>update</b> step. The prediction step estimates the robot’s new position based on control inputs, accounting for motion uncertainty. The update step refines this prediction using sensor measurements, reducing uncertainty by incorporating environmental observations. This process allows the robot to continuously update its belief about its current pose in the environment.</p>
+
+                            <p>The robot's pose is represented by its x and y coordinates on the ground plane, as well as its orientation angle. The continuous state space is discretized into a grid to allow Bayes filtering to approximate the robot’s belief over possible locations.</p>
+
+                            <p>For this lab, I reviewed the Bayes filter algorithm and familiarized myself with the simulator environment. I prepared by understanding how the prediction and update steps work together to refine the robot’s localization, and how the sensor and motion models contribute to belief updates.</p>
 
                             
                         </p>   
