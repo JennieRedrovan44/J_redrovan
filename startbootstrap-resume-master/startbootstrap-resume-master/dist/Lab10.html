@@ -117,11 +117,11 @@
                         <h3 class="mb-0">Sensor Model:</h3>
                         <p>
                             <p>
-                                For this part, I implemented <code>sensor_model()</code>, which calculates \( P(z|x) \), the probability of getting a certain sensor observation given the robot’s pose. The function takes in the true sensor readings at a particular pose and compares them to the expected readings based on the map.
+                                For this part, I implemented sensor_model(), which calculates P(z|x), the probability of getting a certain sensor observation given the robot’s pose. The function takes in the true sensor readings at a particular pose and compares them to the expected readings based on the map.
                                 </p>
                                 
                                 <p>
-                                For each measurement, it uses a Gaussian model centered at the observed distance, with a standard deviation that accounts for sensor noise. I used <code>loc.gaussian()</code> to compute the probability for each reading.
+                                For each measurement, it uses a Gaussian model centered at the observed distance, with a standard deviation that accounts for sensor noise. I used loc.gaussian() to compute the probability for each reading.
                                 </p>
                                 
                                 <p>
