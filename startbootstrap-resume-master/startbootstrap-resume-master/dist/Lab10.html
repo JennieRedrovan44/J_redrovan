@@ -55,116 +55,34 @@
                     <div class="flex-grow-1">
                         <h3 class="mb-0"></h3>
                         <p>
-                            <p>Lab 10 focuses on using a Python simulation to implement grid localization for a virtual robot in a 2D environment, similar to the arena used in previous labs. Before starting, I set up the simulator by installing Box2D, Pygame, and cloning the starter repository as instructed.</p>
+                            <p>Lab 10 focuses on using a Python simulation to implement grid localization for a virtual robot in a 2D environment, similar to the arena used in previous labs. Before starting, I set up the simulator by installing Box2D and Pygame as instructed.</p>
 
-                            <p>Localization is the process of estimating where a robot is in space based on noisy sensor and motion data. Since the robot has no direct access to its true position, we use a probabilistic approach through a Bayes filter to maintain and update a belief about its location over time.</p>
+                            <p>Localization is the process of estimating where a robot is in space based on the sensors and based on the initial state. Since the robot has no direct access to its true position, we use a probabilistic approach through a Bayes filter to maintain and update a belief about its location.</p>
 
-                            <p>The Bayes filter operates in two steps: a <b>prediction</b> step and an <b>update</b> step. The prediction step estimates the robot’s new position based on control inputs, accounting for motion uncertainty. The update step refines this prediction using sensor measurements, reducing uncertainty by incorporating environmental observations. This process allows the robot to continuously update its belief about its current pose in the environment.</p>
+                            <p>The Bayes filter operates in two steps: a <b>prediction</b> step and an <b>update</b> step. The prediction step estimates the robot’s new position based on control inputs. While the update step refines this prediction using sensor measurements, reducing uncertainty by incorporating environmental observations. This process allows the robot to continuously update its belief about its current pose in the environment.</p>
 
                             <p>The robot's pose is represented by its x and y coordinates on the ground plane, as well as its orientation angle. The continuous state space is discretized into a grid to allow Bayes filtering to approximate the robot’s belief over possible locations.</p>
 
                             <p>For this lab, I reviewed the Bayes filter algorithm and familiarized myself with the simulator environment. I prepared by understanding how the prediction and update steps work together to refine the robot’s localization, and how the sensor and motion models contribute to belief updates.</p>
-
-                            
+                            <img src="assets/img_lab10/algorithm.png" alt="bayes algorithm" width="90%" /><br><br>                            
                         </p>   
                     </div>
                 </div>
                 <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
                     <div class="flex-grow-1">
-                        <h3 class="mb-0">Orientation Control</h3>
+                        <h3 class="mb-0">Tasks:</h3>
                         <p>
-                            For mapping, I went with orientation control. Initially, my robot wasn’t performing well at angles other than zero. After talking to Aidan Derocher, he pointed out that my Kp was too high, which was causing the system to overshoot. I lowered Kp to 0.9 and added a Ki value of 0.01. That made the robot way more stable and able to hold its position at different angles. Once it was tuned, I was able to get 24-degree increments and take 3 readings per spot. To run the mapping routine, I added a BLE command to the Artemis that would start the process.<br><br>
-                            code snippet:<br><br>
-                            <img src="assets/img_lab9/mapit1_ble.png" alt="Flip Code Snippet" width="90%" /><br><br>
-                            <img src="assets/img_lab9/mapit2_ble.png" alt="Flip Code Snippet" width="90%" /><br><br>
-                            <img src="assets/img_lab9/mapit3_ble.png" alt="Flip Code Snippet" width="90%" /><br><br>
+                        Using the Python simulator and the lab 10 notebook, I wrote the code to implement the Bayes Filter for localization. 
+                        </p>
+                        <h3 class="mb-0">Compute Control:</h3>
+                        <p>
+                        
+                            
+                        </p>
+                    </div>
+                </div>
 
-                            This command makes the car turn to each angle using the PID controller until it’s close enough—within 4 degrees. Once it gets there, it takes 3 TOF readings while staying still. In Python, I set the step size to 24 degrees, which gave me 45 data points per spot.
 
-                            While testing, I tuned the PID values to make the turns smoother and more consistent (Kp = 1.0 , Ki = 0.01, Kd = 0). You can see how it moves in the video below.
-                            <iframe
-                            width="560"
-                            height="315"
-                            src="https://www.youtube.com/embed/w33BsmkBDJE"
-                            title="YouTube video player"
-                            frameborder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                            allowfullscreen>
-                        </iframe><br><br>
-                            While I do see that my robot does go a little slower than it should be when rotating, but I found that keeping at this kp and ki kept the car from going unstable. I would like to tune it a little more, but I did not have much time as I would hope. <br><br>
-                        </p>
-                    </div>
-                </div>
-                <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
-                    <div class="flex-grow-1">
-                        <h3 class="mb-0">rReadings</h3>
-                        <p>
-                            Since I got mapping to work after office hours, I could not use the four desinated locations in the arena setup in the lab. Instead, I used the hallway and placed my robot in four distinct locations. 
-                            After taking the measurement from each location, I sent the data over to python which I would later be able to plot. <br><br>
-                            I was able to get a good amount of data from each location. I was able to get 3 readings per angle, and I took 15 angles per location. I then averaged the data and plotted it in polar coordinates. <br><br>
-                            Location where I took the measurements:<br><br>
-                            <img src="assets/img_lab9/location.png" alt="Locations" width="90%" /><br><br>
-                            I marked approximately where I took the measurements in the image above. <br><br>
-                            I then plotted in the polar coordinate plot. <br><br>
-                            Location 1:<br><br>
-                            <img src="assets/img_lab9/frist_reading_distance.png" alt="Locations" width="90%" /><br><br>
-                            Location 2: <br><br>
-                            <img src="assets/img_lab9/2nd_reading_distance.png" alt="Locations" width="90%" /><br><br>
-                            Location 3: <br><br>
-                            <img src="assets/img_lab9/3rd_reading_distance.png" alt="Locations" width="90%" /><br><br>
-                            Location 4: <br><br>
-                            <img src="assets/img_lab9/4th_reading_distance.png" alt="Locations" width="90%" /><br><br>
-                        </p>
-                    </div>
-                </div>
-                <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
-                    <div class="flex-grow-1">
-                        <h3 class="mb-0">Merge and Plot readings</h3>
-                        <p>
-                        <div style="font-family: Arial, sans-serif; line-height: 1.6; max-width: 700px;">
-                                <h2>Transformation Mathematics</h2>
-                              
-                                <p>The transformation from <strong>polar</strong> to <strong>Cartesian</strong> coordinates involves two main steps:</p>
-                              
-                                <h3>1. Convert Polar to Local Cartesian Coordinates</h3>
-                                <p>Given a point in polar coordinates <em>(r, θ)</em>, the local Cartesian coordinates are:</p>
-                                <p>
-                                  <code>x<sub>local</sub> = r · cos(θ)</code><br>
-                                  <code>y<sub>local</sub> = r · sin(θ)</code>
-                                </p>
-                              
-                                <h3>2. Transform Local to Global Map Coordinates</h3>
-                                <p>
-                                  Apply a transformation matrix to convert local coordinates to global coordinates using the robot's position and orientation <em>(x<sub>robot</sub>, y<sub>robot</sub>, α)</em>:
-                                </p>
-                                <p>
-                                  <code>x<sub>global</sub> = cos(α) · x<sub>local</sub> - sin(α) · y<sub>local</sub> + x<sub>robot</sub></code><br>
-                                  <code>y<sub>global</sub> = sin(α) · x<sub>local</sub> + cos(α) · y<sub>local</sub> + y<sub>robot</sub></code>
-                                </p>
-                              
-                                <h3>3. Scale Distance Units</h3>
-                                <p>
-                                  To convert distances from millimeters to feet:
-                                </p>
-                                <p><code>distance (feet) = distance (mm) / 304.8</code></p>
-                        </div>
-                         After plotting all the data together, I got a rough map of the hallway based on both sensors from four different positions. Each spot had its own little quirks, but overall it gave me a decent idea of the space as shown below:<br><br>
-                            <img src="assets/img_lab9/map_orginal.png" alt="Locations" width="90%" /><br><br>
-                        </p>
-                    </div>
-                </div>
-                <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
-                    <div class="flex-grow-1">
-                        <h3 class="mb-0">Edges</h3>
-                        <p>
-                        <div style="font-family: Arial, sans-serif; line-height: 1.6; max-width: 700px;">
-                            <img src="assets/img_lab9/linearstuff.png" alt="Locations" width="90%" /><br><br>
-
-                            Comparing to the hallway, I can see that the robot was able to estimate the edges of the hallway, but I would say that it detected the edges of the hallway was not the best given that there were people or stuff in the way of the robot.
-                            If, I had the oppurninty to test it in the lab, I would have been able to get a better estimate compared to what I got. <br><br>
-                        </p>
-                    </div>
-                </div>
 
                 <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
                     <div class="flex-grow-1">
