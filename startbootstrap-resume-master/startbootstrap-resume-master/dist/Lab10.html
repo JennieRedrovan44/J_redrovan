@@ -64,7 +64,7 @@
                             <p>The robot's pose is represented by its x and y coordinates on the ground plane, as well as its orientation angle. The continuous state space is discretized into a grid to allow Bayes filtering to approximate the robot’s belief over possible locations.</p>
 
                             <p>For this lab, I reviewed the Bayes filter algorithm and familiarized myself with the simulator environment. I prepared by understanding how the prediction and update steps work together to refine the robot’s localization, and how the sensor and motion models contribute to belief updates.</p>
-                            <img src="assets/img_lab10/algorithm.png" alt="bayes algorithm" width="90%" /><br><br>                            
+                            <img src="assets/img_lab10/algorithm.png" alt="bayes algorithm" width="60%" /><br><br>                            
                         </p>   
                     </div>
                 </div>
@@ -76,8 +76,65 @@
                         </p>
                         <h3 class="mb-0">Compute Control:</h3>
                         <p>
+                            The compute control function take the current and the previous pose and then taking the difference can determine the intial rotation (delta_rot1), translatation (delta_trans), and the final rotation (detla_rot2) that essentially gives the steps of the odometry model.<br><br>
+
+                            <img src="assets/img_lab10/odo_model_equation.png" alt="bayes algorithm" width="60%" /><br><br>                            
+                            Delta_rot1 is computed by taking the arctan of the position differnce, and delta_trans is the straight line distance between the two points. While delta_rot2 adjusts for the final rotation needed. 
+                            Both rotations are normalized to be within [-180°, 180°] to ensure that the angles stay consistant. <br><br>
+                            <img src="assets/img_lab10/control.png" alt="bayes algorithm" width="60%" /><br><br>                            
+                        </p>
+
+                        <h3 class="mb-0">Odometry Motion Model:</h3>
+                        <p>
+                            <p>
+                                For this part, I implemented the odometry motion model, which calculates the probability that the robot actually made the move we expected it to. It first uses compute_control() to get the ideal movement, which is broken down into rotation 1, translation, and rotation 2.
+                                </p>
+                                
+                                <p>
+                                Each of these control steps is compared to the corresponding control input u, and the error is modeled as a Gaussian distribution centered on the expected value, with a given standard deviation. Since the steps are treated as independent, the three probabilities are multiplied together to get the final result.
+                                </p>
+                                
+                                <p>
+                                This gives us P(x'|x,u), the probability that the robot reached the new pose after applying the control input.
+                                </p>
                         
-                            
+                        <img src="assets/img_lab10/odom_motion_model.png" alt="bayes algorithm" width="80%" /><br><br>
+                        </p>
+
+                        <h3 class="mb-0">Prediction Step:</h3>
+                        <p>
+                        The prediction step is the frist part of the Bayes filter, where it takes the previous odometry and uses compute_control() to calcuate the control input. Then it initalizes the new belief bel_bar to to zeros. 
+                        The function loops through every prior cell (x, y, theta) with non-negligible belief (I used a threshold of 0.0001), and for each one, it loops every possible new cell (x', y', theta'). <br><br>
+
+                        It then converts into grid indices into real poses using the mapper, and uses the odometry motion model to get the probability of moving from the old pose to the new pose given the control input. <br><br>
+
+                        At the end, the bel_bar is normalized to ensure that the sum of the probabilities is 1. <br><br>
+
+                
+                        <img src="assets/img_lab10/predication_step.png" alt="bayes algorithm" width="60%" /><br><br>
+                        </p>
+
+                        <h3 class="mb-0">Sensor Model:</h3>
+                        <p>
+                            <p>
+                                For this part, I implemented <code>sensor_model()</code>, which calculates \( P(z|x) \), the probability of getting a certain sensor observation given the robot’s pose. The function takes in the true sensor readings at a particular pose and compares them to the expected readings based on the map.
+                                </p>
+                                
+                                <p>
+                                For each measurement, it uses a Gaussian model centered at the observed distance, with a standard deviation that accounts for sensor noise. I used <code>loc.gaussian()</code> to compute the probability for each reading.
+                                </p>
+                                
+                                <p>
+                                The final output is a probability score that shows how well the robot’s actual observations match what would be expected if it were standing at that pose.
+                                </p>
+                        
+                        <img src="assets/img_lab10/sensor_model.png" alt="bayes algorithm" width="60%" /><br><br>
+                        </p>
+
+                        <h3 class="mb-0">Update Step:</h3>
+                        <p>
+                        The update step is the last function in the Bayes filter, which the function loops over the grid for the current state, retrieves the sensor model data using the sensor model function, which then updates the belief. The updated belief is then normalized to the sum of 1 which represents the robot estimation of the position. <br><br>
+                        <img src="assets/img_lab10/Update_step.png" alt="bayes algorithm" width="60%" /><br><br>
                         </p>
                     </div>
                 </div>
