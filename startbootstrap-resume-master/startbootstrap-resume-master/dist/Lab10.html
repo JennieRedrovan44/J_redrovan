@@ -57,9 +57,10 @@
                         <p>
                             <p>The purpose of this lab is to implement grid localization using a Bayes filter in a simulated environment. Before starting, I reviewed the lecture slides and background material to better understand how the Bayes filter works and why it is useful for localization.</p>
 
-                            <p>The Bayes filter is broken down into two main steps: the <b>prediction</b> step and the <b>update</b> step. It uses the previous belief distribution \( bel(x_{t-1}) \), the control input \( u_t \), and the new sensor measurement \( z_t \) to calculate the updated belief distribution \( bel(x_t) \). The prediction step estimates the robot's new position based on its movement, while the update step refines this estimate by incorporating sensor data and normalizing the resulting distribution.</p>
-                            
+                            <p>The Bayes filter is broken down into two main steps: the <b>prediction</b> step and the <b>update</b> step. It uses the previous belief distribution bel(x<sub>t-1</sub>), the control input u<sub>t</sub>, and the new sensor measurement z<sub>t</sub> to calculate the updated belief distribution bel(x<sub>t</sub>). The prediction step estimates the robot's new position based on its movement, while the update step refines this estimate by incorporating sensor data and normalizing the resulting distribution.</p>
+
                             <p>For the prelab, I set up the simulator by following the provided instructions, installing Box2D and Pygame, and cloning the starter repository. I familiarized myself with the simulator by running basic open-loop and closed-loop controllers. I also reviewed grid localization, where the robot’s continuous position (x, y, and θ) is discretized into a 12 × 9 × 18 grid, allowing Bayes filtering to approximate the robot’s pose over 1944 possible states.</p>
+
                             
                         </p>   
                     </div>
