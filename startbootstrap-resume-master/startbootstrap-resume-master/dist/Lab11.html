@@ -65,7 +65,7 @@
                         <h3 class="mb-0">Simulation</h3>
                         <body>
                             <p>
-                            First, I verified that my Bayes filter implementation was working by running the provided lab11_sim.ipynb notebook in simulation as shown from the screenshot and the video below.
+                            First, I verified that my Bayes filter implementation was working by running the provided lab11_sim.ipynb notebook in simulation as shown from the screenshot and the video below.<br><br>
                             <img src="assets/img_lab10/Update_step.png" alt="bayes algorithm" width="60%" /><br><br>
                             </p>
                             <iframe
@@ -117,7 +117,7 @@
                             <h4 class="mb-0">(-3 ft ,-2 ft ,0 deg)</h4>
                             <p>
                                 <img src="assets/img_lab11/-three,-two_point.png" alt="bayes algorithm" width="70%" />
-                                <img src="assets/img_lab11/-three,-two_point_ground_truth.png" alt="bayes algorithm" width="70%" /><br><br>
+                                <img src="assets/img_lab11/-three,-two_point_groundtruth.png" alt="bayes algorithm" width="70%" /><br><br>
                                 <img src="assets/img_lab11/-three,-two_point_data.png" alt="bayes algorithm" width="70%" /><br><br>
                              </p>
 
@@ -130,9 +130,8 @@
                               </p>
                               <h4 class="mb-0">(5 ft,-3 ft, 0 deg)</h4>
                               <p>
-                                  <img src="assets/img_lab11/five,-three point.png" alt="bayes algorithm" width="70%" />
-                                  <img src="assets/img_lab11/five, -three, ground truth.png" alt="bayes algorithm" width="70%" /><br><br>
-                                  <img src="assets/img_lab11/five,-three_data.png" alt="bayes algorithm" width="70%" /><br><br>
+                                  <img src="assets/img_lab11/five,-three point.png" alt="bayes algorithm" width="50%" /><br><br>
+                                  <img src="assets/img_lab11/five,-three_data.png" alt="bayes algorithm" width="50%" /><br><br>
 
 
                                </p>
@@ -150,23 +149,65 @@
                 </div>
 
 
+                <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
+                    <div class="flex-grow-1">
+                        
+                        <h3 class="mb-0">Additional tests:</h3>
+                        <body>
+                            <p>
+                              I ran the robot mutltiple times at the locations to see if the robot was able to localize itself. 
+                              <h4 class="mb-0">(-3 ft ,-2 ft ,0 deg)</h4>
+                              <p>
+                                  <img src="assets/img_lab11/-three,-two_point_part2.png" alt="bayes algorithm" width="70%" />
+                                  <img src="assets/img_lab11/-three,-two_point_groundtruth.png" alt="bayes algorithm" width="70%" /><br><br>
+                                  <img src="assets/img_lab11/-three,-two_point_data_part_2.png" alt="bayes algorithm" width="70%" /><br><br>
+                               </p>
+  
+                               <h4 class="mb-0">(0 ft,3 ft, 0 deg)</h4>
+                               <p>
+                                   <img src="assets/img_lab11/zero,three, point_part2.png" alt="bayes algorithm" width="70%" />
+                                   <img src="assets/img_lab11/zero,three, point _ground truth.png" alt="bayes algorithm" width="70%" /><br><br>
+                                   <img src="assets/img_lab11/zero,three, point_data_part2.png" alt="bayes algorithm" width="70%" /><br><br>
+  
+                                </p>
+                                <h4 class="mb-0">(5 ft,-3 ft, 0 deg)</h4>
+                                <p>
+                                    <img src="assets/img_lab11/-three_bottom_right.png" alt="bayes algorithm" width="70%" />
+                                   <img src="assets/img_lab11/five, -three, ground truth.png" alt="bayes algorithm" width="70%" /><br><br>
+                                 </p>
+                                 <h4 class="mb-0"> (5 ft,3 ft, 0 deg)</h4>
+                                 <p>
+                                     <img src="assets/img_lab11/five, three, point_part2.png" alt="bayes algorithm" width="70%" />
+                                     <img src="assets/img_lab11/five, three, ground truth.png" alt="bayes algorithm" width="70%" /><br><br>
+                                     <img src="assets/img_lab11/five, three, data _part2.png" alt="bayes algorithm" width="70%" /><br><br>
+                                    
+                                  </p>
+
+                            </p>
+                        </body>
+                    </div>
+                </div>
+
+
                             
-                            <!-- Force the Conclusion to start on a new line -->
-                            <div style="clear: both;"></div>
-                            
-                            <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
-                                <div class="flex-grow-1">
-                                    <h3 class="mb-0">Conclusion</h3>
-                                    <div style="font-family: Arial, sans-serif; line-height: 1.6; max-width: 700px;">
-                                        <p>
-                                            Overall, this lab provided a lot of insights into the robot's localization process and how the Bayes filter works. I learned how to implement the prediction and update steps of the Bayes filter, and how to use the odometry and sensor models to refine the robot's belief about its position. The simulation helped me visualize how the robot's belief changes over time as it moves and receives sensor readings.
-                                        </p>
-                                        <p>
-                                            I referenced Stephan's code for lab 10!
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
+                <!-- Force the Conclusion to start on a new line -->
+                <div style="clear: both;"></div>
+                
+                <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
+                    <div class="flex-grow-1">
+                        <h3 class="mb-0">Conclusion</h3>
+                        <div style="font-family: Arial, sans-serif; line-height: 1.6; max-width: 700px;">
+                            <p>
+                            This lab was a great way to see that my robot is working and can localize itself in the real world! I am not sure why in the one corner it was harder to localize the robot. 
+                            However, I will have to look into this for the next lab. 
+
+                            </p>
+                            <p>
+                                I referenced Stephan's code for lab 11! I also worked with Sana and Lulu on this lab!
+                            </p>
+                        </div>
+                    </div>
+                </div>
                 
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
