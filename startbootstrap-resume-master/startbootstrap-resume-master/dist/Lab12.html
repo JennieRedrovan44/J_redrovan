@@ -64,7 +64,7 @@
                         
                         <h3 class="mb-0">Approach</h3>
                         <body>
-                            <p>
+                                <p>
                                 So we each attemped to implement our own path planning and execution algorithm. In my case, I frist attempted to implement Localization using the Bayes Filter. However, I realize now that I was not doing the correct apprach.
                                 Instead of programming the points that I wanted to go to in arduino, I should have been programming the points in the python script. So each time it would run, it would see if the robot was able to localize itself at the points that I wanted it to go to.
                                 I am not sure why I did not realize this sooner, I think the reason why I hardcoded the points in arduino was because I was trying to get the robot to go to the points that I wanted it to go to and then localize itself at those points. However, that is pretty stupid because I should have just been programming the points in the python script and then running the robot to see if it was able to localize itself at those points, 
@@ -87,7 +87,7 @@
                                 <img src="assets/img_lab12/labbayes2.png" alt="bayes algorithm" width="70%" /><br><br>
                                 <img src="assets/img_lab12/labbayes3.png" alt="bayes algorithm" width="70%" /><br><br>
                                 
-                                Video my robot running with BAYES: <br><br>
+                                Video my robot running with BAYES: <br><br></p>
                                 <iframe
                                 width="560"
                                 height="315"
@@ -96,14 +96,15 @@
                                 frameborder="0"
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                                 allowfullscreen>
-                                </iframe><br><br>
+                                </iframe> 
+                                <p>
 
                                 Snippt of my code w/o BAYES: <br><br>
                                 <img src="assets/img_lab12/labnobayes1.png" alt="no bayes algorithm" width="70%" /><br><br>
                                 <img src="assets/img_lab12/labnobayes2.png" alt="no bayes algorithm" width="70%" /><br><br>
                                 
                                 
-                                Video my robot running w/o BAYES: <br><br>
+                                Video my robot running w/o BAYES: <br><br></p>
                                 <iframe
                                 width="560"
                                 height="315"
@@ -113,13 +114,13 @@
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                                 allowfullscreen>
                                 </iframe><br><br>
-                                
+                                <p>
                                 As seen in the videos, my robot was able to go the points that I wanted it to go to, but it was for some reaon not able to turn at (2, -3) and it would go crazy. Also, you can see that my robot was able to rotate to do the localization and then go to the next point, in many of my tests, I got rid of localization since it would take a while and it would not help with the batteries that would discharge pretty quick. <br><br>
                                 
                                 My robot was not able to work and instead I worked with Sana and Lulu to get Sana's robot to work. I truly tried my best to get it 
                                 to work, but I was not able to get it to work. However, as I am writing this, I realize that I was not using the correct approach to get my robot to work, but in the future I would do the approach that I mentioned above of pre-gramming the points in the python script.
                               
-                            </p>
+                                </p>
                         </body>
                     </div>
                 </div>
@@ -135,8 +136,9 @@
                                 <img src="assets/img_lab12/sana_code2.png" alt="sana code" width="70%" /><br><br>
                                 <img src="assets/img_lab12/sana_code3.png" alt="sana code" width="70%" /><br><br>
                                 <img src="assets/img_lab12/sana_code4.png" alt="sana code" width="70%" /><br><br>
-
+                            
                                 Video of Sana's robot running: <br><br>
+                            </p>
                                 <iframe
                                 width="560"
                                 height="315"
@@ -146,9 +148,9 @@
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                                 allowfullscreen>
                                 </iframe><br><br>
-
+                            <p>
                                 Overall, Sana's robot was able to trun at the point that I could not get my robot to turn at, which was (2,3). Also, with Sana's robot, it used PID orientation control and PID linear control. 
-
+                            </p>
                             </p>
                         </body>
                     </div>
